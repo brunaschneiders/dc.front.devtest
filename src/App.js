@@ -23,7 +23,7 @@ const App = () => {
 
   const handlePhotosClick = (param, id) => {
     setModalPhotosActive(param)
-    setIdAlbumPhotos(is)
+    setIdAlbumPhotos(id)
   };
 
   useEffect(()=>{
