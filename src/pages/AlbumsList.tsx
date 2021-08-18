@@ -18,47 +18,23 @@ export const AlbumsList = ({
   onCloseButtonClicked
 }: AlbumsListProps): JSX.Element => {
   return (
-    <div
-      style={{
-        border: '1px solid #ccc',
-        marginTop: 10,
-        padding: 10,
-        position: 'absolute',
-        top: 0,
-        background: '#fff'
-      }}
-    >
+    <div className='container'>
       <strong>Album - title</strong>
       <button
         type='button'
-        style={{
-          color: 'blue',
-          textDecoration: 'underline',
-          marginRight: 10,
-          cursor: 'pointer'
-        }}
+        className='button'
         onClick={() => onCloseButtonClicked(false)}
       >
         Fechar
       </button>
       <div>
         {albums.map((album) => (
-          <div
-            style={{
-              background: '#ccc',
-              margin: 5
-            }}
-          >
+          <div className='album-box'>
             <div>user: {album.userId}</div>
             <div>{album.title}</div>
             <button
               type='button'
-              style={{
-                color: 'blue',
-                textDecoration: 'underline',
-                marginRight: 10,
-                cursor: 'pointer'
-              }}
+              className='button'
               onClick={() => onShowPhotosButtonClicked(true, album.id)}
             >
               ver fotos

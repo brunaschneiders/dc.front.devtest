@@ -10,7 +10,7 @@ import {
   UserProps
 } from './pages';
 
-import './styles.css';
+import './styles/mainStyles.css';
 
 const App = (): JSX.Element => {
   const [modalAlbumsActive, setModalAlbumsActive] = useState(false);

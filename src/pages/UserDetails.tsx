@@ -21,25 +21,11 @@ export const UserDetails = ({
 }: UserDetailsProps): JSX.Element => {
   const { id, name, username, email, phone } = user;
   return (
-    <div
-      style={{
-        border: '1px solid #ccc',
-        marginTop: 10,
-        padding: 10,
-        position: 'absolute',
-        top: 0,
-        background: '#fff'
-      }}
-    >
+    <div className='container'>
       <strong>Usuário - {name}</strong>
       <button
         type='button'
-        style={{
-          color: 'blue',
-          textDecoration: 'underline',
-          marginRight: 10,
-          cursor: 'pointer'
-        }}
+        className='button'
         onClick={() => onCloseButtonClicked({} as UserProps)}
       >
         Fechar
@@ -51,12 +37,7 @@ export const UserDetails = ({
         <div>{phone}</div>
         <button
           type='button'
-          style={{
-            color: 'blue',
-            textDecoration: 'underline',
-            marginRight: 10,
-            cursor: 'pointer'
-          }}
+          className='button'
           onClick={() => onShowAlbumButtonClicked(true, id)}
         >
           ver álbum

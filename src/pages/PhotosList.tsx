@@ -17,37 +17,18 @@ export const PhotosList = ({
   onCloseButtonClicked
 }: PhotosListProps): JSX.Element => {
   return (
-    <div
-      style={{
-        border: '1px solid #ccc',
-        marginTop: 10,
-        padding: 10,
-        position: 'absolute',
-        top: 0,
-        background: '#fff'
-      }}
-    >
+    <div className='container'>
       <strong>Lista de Fotos</strong>
       <button
         type='button'
-        style={{
-          color: 'blue',
-          textDecoration: 'underline',
-          marginRight: 10,
-          cursor: 'pointer'
-        }}
+        className='button'
         onClick={() => onCloseButtonClicked(false)}
       >
         Fechar
       </button>
       <div>
         {photos.map((photo) => (
-          <div
-            style={{
-              background: '#ff9800',
-              margin: 5
-            }}
-          >
+          <div className='album-box'>
             <div>album id: {photo.albumId}</div>
             <div>{photo.title}</div>
             <div>
@@ -55,18 +36,9 @@ export const PhotosList = ({
             </div>
           </div>
         ))}
-        <span
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            padding: 10,
-            background: '#FFF',
-            width: '100%',
-            display: 'flex'
-          }}
-        >
+        <span className='footer'>
           <strong>Paginação</strong>
-          <div style={{ display: 'flex' }}>
+          <div className='pagination'>
             <div>
               <strong>1</strong>
             </div>

@@ -1,0 +1,71 @@
+table {
+  font-family: Arial, sans-serif;
+  text-align: left;
+  border-collapse: collapse;
+}
+th,
+td {
+  border: 1px solid grey;
+  padding: 8px;
+}
+th {
+  white-space: nowrap;
+}
+dt {
+  font-weight: 700;
+  float: left;
+  width: 120px;
+}
+dd {
+  margin-left: 120px;
+  margin-bottom: 4px;
+}
+
+
+.button {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.container {
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  background: #fff
+}
+
+.album-box {
+  background: #ff9800;
+  margin: 5px
+}
+
+.photo-box {
+  background: #ccc;
+  margin: 5px
+}
+
+.header {
+  text-align: center; 
+  margin: 50px
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  background: #FFF;
+  width: 100%;
+  display: flex
+}
+
+.title {
+  width: 100%; 
+  display: inline-block
+}
+
+.pagination {
+  display: flex;
+}

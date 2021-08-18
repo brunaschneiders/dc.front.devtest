@@ -32,10 +32,8 @@ export const UsersList = ({
 
   return (
     <>
-      <div style={{ textAlign: 'center', margin: 50 }}>
-        <strong style={{ width: '100%', display: 'inline-block' }}>
-          Lista de usuários
-        </strong>
+      <div className='header'>
+        <strong className='title'>Lista de usuários</strong>
         <input
           type='text'
           placeholder='Buscar usuarios'
@@ -64,12 +62,7 @@ export const UsersList = ({
               <td>
                 <button
                   type='button'
-                  style={{
-                    color: 'blue',
-                    textDecoration: 'underline',
-                    marginRight: 10,
-                    cursor: 'pointer'
-                  }}
+                  className='button'
                   onClick={() => onUserClicked(item.id)}
                 >
                   ver detalhe do usuário
