@@ -10,6 +10,8 @@ import {
   UserProps
 } from './pages';
 
+import jsonPlaceholderService from './services/jsonPlaceholderService';
+
 import './styles/mainStyles.css';
 
 const App = (): JSX.Element => {
@@ -36,22 +38,37 @@ const App = (): JSX.Element => {
     setIdAlbumPhotos(id);
   };
 
+  const getUsers = async (): Promise<void> => {
+    try {
+      const response = await jsonPlaceholderService.getUsers();
+      setUsers(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getAlbums = async (): Promise<void> => {
+    try {
+      const response = await jsonPlaceholderService.getAlbums();
+      setAlbums(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getPhotos = async (): Promise<void> => {
+    try {
+      const response = await jsonPlaceholderService.getPhotos();
+      setAlbumsPhotos(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((data) => {
-        setUsers(data);
-      });
-    fetch('https://jsonplaceholder.typicode.com/albums')
-      .then((response) => response.json())
-      .then((data) => {
-        setAlbums(data);
-      });
-    fetch('https://jsonplaceholder.typicode.com/photos')
-      .then((response) => response.json())
-      .then((data) => {
-        setAlbumsPhotos(data);
-      });
+    getUsers();
+    getAlbums();
+    getPhotos();
   }, []);
 
   const photosFiltered = albumsPhotos.length
