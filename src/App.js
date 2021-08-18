@@ -1,75 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css';
 
-class App extends React.Component {
-  state = {
-    modalAlbumsActive: null,
-    modalUserActive: null,
-    modalPhotosActive: false,
-    idAlbumPhotos: undefined,
-    idAlbum: undefined,
-    users: [],
-    albums: [],
-    albumsPhotos: [],
-    query: ''
+const App = () => {
+  const [modalAlbumsActive, setModalAlbumsActive] = useState(null)
+  const [modalUserActive, setModalUserActive] = useState(null)
+  const [modalPhotosActive, setModalPhotosActive] = useState(false)
+  const [idAlbumPhotos, setIdAlbumPhotos] = useState(undefined)
+  const [idAlbum, setIdAlbum] = useState(undefined)
+  const [users, setUsers] = useState([])
+  const [albums, setAlbums] = useState([])
+  const [albumsPhotos, setAlbumsPhotos] = useState([])
+  const [query, setQuery] = useState('')
+
+  const handleAlbumClick = (param, id) => {
+    setModalAlbumsActive(param)
+    setIdAlbum(id)
   };
 
-  handleAlbumClick = (param, id) => {
-    this.setState({
-      modalAlbumsActive: param,
-      idAlbum: id
-    });
+  const handleUserClick = (index) => {
+    setModalUserActive(users[index])
   };
 
-  handleUserClick = (index) => {
-    this.setState({
-      modalUserActive: this.state.users[index]
-    });
+  const handlePhotosClick = (param, id) => {
+    setModalPhotosActive(param)
+    setIdAlbumPhotos(is)
   };
 
-  handlePhotosClick = (param, id) => {
-    this.setState({
-      modalPhotosActive: param,
-      idAlbumPhotos: id
-    });
-  };
-
-  componentDidMount() {
+  useEffect(()=>{
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          users: data
-        });
-      });
-    fetch('https://jsonplaceholder.typicode.com/albums')
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          albums: data
-        });
-      });
-    fetch('https://jsonplaceholder.typicode.com/photos')
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          albumsPhotos: data
-        });
-      });
-  }
+    .then((response) => response.json())
+    .then((data) => {
+      setUsers(data)
+    });
+  fetch('https://jsonplaceholder.typicode.com/albums')
+    .then((response) => response.json())
+    .then((data) => {
+      setAlbums(data)
+    });
+  fetch('https://jsonplaceholder.typicode.com/photos')
+    .then((response) => response.json())
+    .then((data) => {
+      setAlbumsPhotos(data)
+    });
+  },[])
 
-  render() {
-    var photosFiltered = this.state.albumsPhotos.filter(
-      (item) => item.albumId === this.state.idAlbumPhotos
+  
+    let photosFiltered = albumsPhotos.filter(
+      (item) => item.albumId === idAlbumPhotos
     );
-    var albumFiltered = this.state.albums.filter(
-      (item) => item.userId === this.state.idAlbum
+    let albumFiltered = albums.filter(
+      (item) => item.userId === idAlbum
     );
 
-    var result = this.state.users;
-    if (this.state.query) {
-      const parsedQuery = this.state.query.toLowerCase()
-      result = this.state.users.filter(
+    let result = users;
+    if (query) {
+      const parsedQuery = query.toLowerCase()
+      result = users.filter(
         (item) => item.name.toLowerCase().indexOf(parsedQuery) !== -1 || item.email.toLowerCase().indexOf(parsedQuery) !== -1
       );
     }
@@ -83,7 +69,7 @@ class App extends React.Component {
           <input
             type='text'
             placeholder='Buscar usuarios'
-            onChange={(event) => this.setState({ query: event.target.value })}
+            onChange={(event) => setQuery(event.target.value)}
           />
         </div>
         <table align='center'>
@@ -113,7 +99,7 @@ class App extends React.Component {
                       marginRight: 10,
                       cursor: 'pointer'
                     }}
-                    onClick={() => this.handleUserClick(item.id)}
+                    onClick={() => handleUserClick(item.id)}
                   >
                     ver detalhe do usuário
                   </span>
@@ -123,7 +109,7 @@ class App extends React.Component {
           </tbody>
         </table>
 
-        {this.state.modalAlbumsActive && (
+        {modalAlbumsActive && (
           <div
             style={{
               border: '1px solid #ccc',
@@ -143,9 +129,7 @@ class App extends React.Component {
                 cursor: 'pointer'
               }}
               onClick={() =>
-                this.setState({
-                  modalAlbumsActive: null
-                })
+                setModalAlbumsActive(null)
               }
             >
               Fechar
@@ -167,7 +151,7 @@ class App extends React.Component {
                       marginRight: 10,
                       cursor: 'pointer'
                     }}
-                    onClick={() => this.handlePhotosClick(true, item.id)}
+                    onClick={() => handlePhotosClick(true, item.id)}
                   >
                     ver fotos
                   </div>
@@ -178,7 +162,7 @@ class App extends React.Component {
           </div>
         )}
 
-        {this.state.modalUserActive && (
+        {modalUserActive && (
           <div
             style={{
               border: '1px solid #ccc',
@@ -198,18 +182,16 @@ class App extends React.Component {
                 cursor: 'pointer'
               }}
               onClick={() =>
-                this.setState({
-                  modalUserActive: null
-                })
+                setModalUserActive(null)
               }
             >
               Fechar
             </span>
             <div>
-              <div>{this.state.modalUserActive.name}</div>
-              <div>{this.state.modalUserActive.username}</div>
-              <div>{this.state.modalUserActive.email}</div>
-              <div>{this.state.modalUserActive.phone}</div>
+              <div>{modalUserActive.name}</div>
+              <div>{modalUserActive.username}</div>
+              <div>{modalUserActive.email}</div>
+              <div>{modalUserActive.phone}</div>
               <span
                 style={{
                   color: 'blue',
@@ -218,7 +200,7 @@ class App extends React.Component {
                   cursor: 'pointer'
                 }}
                 onClick={() =>
-                  this.handleAlbumClick(true, this.state.modalUserActive.id)
+                  handleAlbumClick(true, modalUserActive.id)
                 }
               >
                 ver álbum
@@ -227,7 +209,7 @@ class App extends React.Component {
           </div>
         )}
 
-        {this.state.modalPhotosActive && (
+        {modalPhotosActive && (
           <div
             style={{
               border: '1px solid #ccc',
@@ -247,9 +229,7 @@ class App extends React.Component {
                 cursor: 'pointer'
               }}
               onClick={() =>
-                this.setState({
-                  modalPhotosActive: null
-                })
+                setModalPhotosActive(null)
               }
             >
               Fechar
@@ -293,7 +273,7 @@ class App extends React.Component {
         )}
       </div>
     );
-  }
+  
 }
 
 export default App;
