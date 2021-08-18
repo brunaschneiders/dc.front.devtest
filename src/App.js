@@ -87,36 +87,40 @@ class App extends React.Component {
           />
         </div>
         <table align='center'>
-          <tr>
-            <td>Nome</td>
-            <td>Email</td>
-            <td>Telefone</td>
-            <td>Website</td>
-            <td>Quantidade Albums</td>
-            <td>Ações</td>
-          </tr>
-          {result.map((item, index) => (
+          <thead>
             <tr>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.phone}</td>
-              <td>{item.website}</td>
-              <td>0</td>
-              <td>
-                <span
-                  style={{
-                    color: 'blue',
-                    textDecoration: 'underline',
-                    marginRight: 10,
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => this.handleUserClick(item.id)}
-                >
-                  ver detalhe do usuário
-                </span>
-              </td>
+              <td>Nome</td>
+              <td>Email</td>
+              <td>Telefone</td>
+              <td>Website</td>
+              <td>Quantidade Albums</td>
+              <td>Ações</td>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {result.map((item) => (
+              <tr key={item.id}>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.phone}</td>
+                <td>{item.website}</td>
+                <td>0</td>
+                <td>
+                  <span
+                    style={{
+                      color: 'blue',
+                      textDecoration: 'underline',
+                      marginRight: 10,
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => this.handleUserClick(item.id)}
+                  >
+                    ver detalhe do usuário
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
 
         {this.state.modalAlbumsActive && (
