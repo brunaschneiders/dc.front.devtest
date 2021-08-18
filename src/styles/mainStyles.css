@@ -2,6 +2,7 @@ table {
   font-family: Arial, sans-serif;
   text-align: left;
   border-collapse: collapse;
+  margin: auto
 }
 th,
 td {
@@ -47,12 +48,12 @@ dd {
   margin: 5px
 }
 
-.header {
+header {
   text-align: center; 
   margin: 50px
 }
 
-.footer {
+footer {
   position: fixed;
   bottom: 0;
   padding: 10px;

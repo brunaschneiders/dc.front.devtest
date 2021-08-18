@@ -32,14 +32,14 @@ export const UsersList = ({
 
   return (
     <>
-      <div className='header'>
-        <strong className='title'>Lista de usuários</strong>
+      <header>
+        <h1 className='title'>Lista de usuários</h1>
         <input
           type='text'
           placeholder='Buscar usuarios'
           onChange={(event) => setQuery(event.target.value)}
         />
-      </div>
+      </header>
       <table>
         <thead>
           <tr>

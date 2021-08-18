@@ -21,8 +21,8 @@ export const UserDetails = ({
 }: UserDetailsProps): JSX.Element => {
   const { id, name, username, email, phone } = user;
   return (
-    <div className='container'>
-      <strong>Usuário - {name}</strong>
+    <main className='container'>
+      <h4>Usuário - {name}</h4>
       <button
         type='button'
         className='button'
@@ -43,6 +43,6 @@ export const UserDetails = ({
           ver álbum
         </button>
       </div>
-    </div>
+    </main>
   );
 };

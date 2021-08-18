@@ -18,8 +18,8 @@ export const AlbumsList = ({
   onCloseButtonClicked
 }: AlbumsListProps): JSX.Element => {
   return (
-    <div className='container'>
-      <strong>Album - title</strong>
+    <main className='container'>
+      <h4>Album - title</h4>
       <button
         type='button'
         className='button'
@@ -27,22 +27,20 @@ export const AlbumsList = ({
       >
         Fechar
       </button>
-      <div>
-        {albums.map((album) => (
-          <div className='album-box'>
-            <div>user: {album.userId}</div>
-            <div>{album.title}</div>
-            <button
-              type='button'
-              className='button'
-              onClick={() => onShowPhotosButtonClicked(true, album.id)}
-            >
-              ver fotos
-            </button>
-            <div>...</div>
-          </div>
-        ))}
-      </div>
-    </div>
+      {albums.map((album) => (
+        <div className='album-box'>
+          <div>user: {album.userId}</div>
+          <div>{album.title}</div>
+          <button
+            type='button'
+            className='button'
+            onClick={() => onShowPhotosButtonClicked(true, album.id)}
+          >
+            ver fotos
+          </button>
+          <div>...</div>
+        </div>
+      ))}
+    </main>
   );
 };
