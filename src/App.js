@@ -1,5 +1,5 @@
 import React from 'react';
-import "./styles.css";
+import './styles.css';
 
 class App extends React.Component {
   state = {
@@ -13,69 +13,80 @@ class App extends React.Component {
     albumsPhotos: [],
     query: ''
   };
-  
+
   handleAlbumClick = (param, id) => {
     this.setState({
       modalAlbumsActive: param,
       idAlbum: id
-    })
+    });
   };
-  
+
   handleUserClick = (index) => {
     this.setState({
       modalUserActive: this.state.users[index]
-    })
+    });
   };
 
   handlePhotosClick = (param, id) => {
     this.setState({
       modalPhotosActive: param,
       idAlbumPhotos: id
-    })
+    });
   };
 
-  componentDidMount () {
+  componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           users: data
-        })
+        });
       });
     fetch('https://jsonplaceholder.typicode.com/albums')
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           albums: data
-        })
+        });
       });
     fetch('https://jsonplaceholder.typicode.com/photos')
       .then((response) => response.json())
       .then((data) => {
         this.setState({
           albumsPhotos: data
-        })
+        });
       });
-  };
+  }
 
-  render () {
-    var photosFiltered = this.state.albumsPhotos.filter(item => item.albumId === this.state.idAlbumPhotos);
-    var albumFiltered = this.state.albums.filter(item => item.userId === this.state.idAlbum);
+  render() {
+    var photosFiltered = this.state.albumsPhotos.filter(
+      (item) => item.albumId === this.state.idAlbumPhotos
+    );
+    var albumFiltered = this.state.albums.filter(
+      (item) => item.userId === this.state.idAlbum
+    );
 
     var result = this.state.users;
     if (this.state.query) {
-      result = this.state.users.filter(item => item.name.indexOf(this.state.query) !== -1);
-    };
+      const parsedQuery = this.state.query.toLowerCase()
+      result = this.state.users.filter(
+        (item) => item.name.toLowerCase().indexOf(parsedQuery) !== -1 || item.email.toLowerCase().indexOf(parsedQuery) !== -1
+      );
+    }
 
     return (
       <div>
-        <div style={{textAlign: 'center', margin: 50}}>
-        <strong style={{width: '100%', display: 'inline-block'}}>Lista de usuários</strong>
-        <input type="text" placeholder="Buscar usuarios" 
-          onChange={event => this.setState({ query: event.target.value })}
-        />
+        <div style={{ textAlign: 'center', margin: 50 }}>
+          <strong style={{ width: '100%', display: 'inline-block' }}>
+            Lista de usuários
+          </strong>
+          <input
+            type='text'
+            placeholder='Buscar usuarios'
+            onChange={(event) => this.setState({ query: event.target.value })}
+          />
         </div>
-        <table align="center">
+        <table align='center'>
           <tr>
             <td>Nome</td>
             <td>Email</td>
@@ -92,7 +103,15 @@ class App extends React.Component {
               <td>{item.website}</td>
               <td>0</td>
               <td>
-                <span style={{ color: 'blue', textDecoration: 'underline', marginRight: 10, cursor: 'pointer' }} onClick={() => this.handleUserClick(item.id)}>
+                <span
+                  style={{
+                    color: 'blue',
+                    textDecoration: 'underline',
+                    marginRight: 10,
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => this.handleUserClick(item.id)}
+                >
                   ver detalhe do usuário
                 </span>
               </td>
@@ -103,29 +122,49 @@ class App extends React.Component {
         {this.state.modalAlbumsActive && (
           <div
             style={{
-              border: "1px solid #ccc",
+              border: '1px solid #ccc',
               marginTop: 10,
               padding: 10,
-              position: "absolute",
+              position: 'absolute',
               top: 0,
-              background: "#fff"
+              background: '#fff'
             }}
           >
             <strong>Album - {'title'}</strong>
-            <span style={{ color: 'blue', textDecoration: 'underline', marginRight: 10, cursor: 'pointer' }} onClick={() => this.setState({
-              modalAlbumsActive: null
-            })}>Fechar</span>
+            <span
+              style={{
+                color: 'blue',
+                textDecoration: 'underline',
+                marginRight: 10,
+                cursor: 'pointer'
+              }}
+              onClick={() =>
+                this.setState({
+                  modalAlbumsActive: null
+                })
+              }
+            >
+              Fechar
+            </span>
             <div>
-              {albumFiltered.map(item => (
+              {albumFiltered.map((item) => (
                 <div
                   style={{
-                    background: "#ccc",
+                    background: '#ccc',
                     margin: 5
                   }}
                 >
                   <div>user: {item.userId}</div>
                   <div>{item.title}</div>
-                  <div style={{ color: 'blue', textDecoration: 'underline', marginRight: 10, cursor: 'pointer' }} onClick={() => this.handlePhotosClick(true,item.id)}>
+                  <div
+                    style={{
+                      color: 'blue',
+                      textDecoration: 'underline',
+                      marginRight: 10,
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => this.handlePhotosClick(true, item.id)}
+                  >
                     ver fotos
                   </div>
                   <div>...</div>
@@ -138,24 +177,46 @@ class App extends React.Component {
         {this.state.modalUserActive && (
           <div
             style={{
-              border: "1px solid #ccc",
+              border: '1px solid #ccc',
               marginTop: 10,
               padding: 10,
-              position: "absolute",
+              position: 'absolute',
               top: 0,
-              background: "#fff"
+              background: '#fff'
             }}
           >
             <strong>Usuário - {'name'}</strong>
-            <span style={{ color: 'blue', textDecoration: 'underline', marginRight: 10, cursor: 'pointer' }} onClick={() => this.setState({
-                modalUserActive: null
-              })}>Fechar</span>
+            <span
+              style={{
+                color: 'blue',
+                textDecoration: 'underline',
+                marginRight: 10,
+                cursor: 'pointer'
+              }}
+              onClick={() =>
+                this.setState({
+                  modalUserActive: null
+                })
+              }
+            >
+              Fechar
+            </span>
             <div>
               <div>{this.state.modalUserActive.name}</div>
               <div>{this.state.modalUserActive.username}</div>
               <div>{this.state.modalUserActive.email}</div>
               <div>{this.state.modalUserActive.phone}</div>
-              <span style={{ color: 'blue', textDecoration: 'underline', marginRight: 10, cursor: 'pointer' }} onClick={() => this.handleAlbumClick(true,this.state.modalUserActive.id)}>
+              <span
+                style={{
+                  color: 'blue',
+                  textDecoration: 'underline',
+                  marginRight: 10,
+                  cursor: 'pointer'
+                }}
+                onClick={() =>
+                  this.handleAlbumClick(true, this.state.modalUserActive.id)
+                }
+              >
                 ver álbum
               </span>
             </div>
@@ -165,23 +226,35 @@ class App extends React.Component {
         {this.state.modalPhotosActive && (
           <div
             style={{
-              border: "1px solid #ccc",
+              border: '1px solid #ccc',
               marginTop: 10,
               padding: 10,
-              position: "absolute",
+              position: 'absolute',
               top: 0,
-              background: "#fff"
+              background: '#fff'
             }}
           >
             <strong>Lista de Fotos</strong>
-            <span style={{ color: 'blue', textDecoration: 'underline', marginRight: 10, cursor: 'pointer' }} onClick={() => this.setState({
-              modalPhotosActive: null
-            })}>Fechar</span>
+            <span
+              style={{
+                color: 'blue',
+                textDecoration: 'underline',
+                marginRight: 10,
+                cursor: 'pointer'
+              }}
+              onClick={() =>
+                this.setState({
+                  modalPhotosActive: null
+                })
+              }
+            >
+              Fechar
+            </span>
             <div>
-              {photosFiltered.map(item => (
+              {photosFiltered.map((item) => (
                 <div
                   style={{
-                    background: "#ff9800",
+                    background: '#ff9800',
                     margin: 5
                   }}
                 >
@@ -192,13 +265,24 @@ class App extends React.Component {
                   </div>
                 </div>
               ))}
-                <span style={{position:"fixed", bottom: 0, padding: 10, background: '#FFF', width: "100%", display: 'flex'}}>
-                  <strong>Paginação</strong>
-                  <div style={{display: 'flex'}}>
-                    <div><strong>1</strong></div>
-                    <div>2</div>
-                    <div>3</div>
+              <span
+                style={{
+                  position: 'fixed',
+                  bottom: 0,
+                  padding: 10,
+                  background: '#FFF',
+                  width: '100%',
+                  display: 'flex'
+                }}
+              >
+                <strong>Paginação</strong>
+                <div style={{ display: 'flex' }}>
+                  <div>
+                    <strong>1</strong>
                   </div>
+                  <div>2</div>
+                  <div>3</div>
+                </div>
               </span>
             </div>
           </div>
