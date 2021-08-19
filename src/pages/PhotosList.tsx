@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+
+import jsonPlaceholderService from '../services/jsonPlaceholderService';
 
 export type PhotoProps = {
   id: number;
@@ -7,24 +10,35 @@ export type PhotoProps = {
   url: string;
 };
 
-interface PhotosListProps {
-  photos: PhotoProps[];
-  onCloseButtonClicked: (show: boolean) => void;
-}
+export const PhotosList = (): JSX.Element => {
+  const { albumId } = useParams<{ albumId: string }>();
+  const { goBack } = useHistory();
 
-export const PhotosList = ({
-  photos,
-  onCloseButtonClicked
-}: PhotosListProps): JSX.Element => {
+  const [photos, setPhotos] = useState([] as PhotoProps[]);
+
+  useEffect(() => {
+    const getPhotos = async (): Promise<void> => {
+      if (!Number(albumId)) return;
+
+      try {
+        const response = await jsonPlaceholderService.getPhotosByAlbumId(
+          Number(albumId)
+        );
+
+        setPhotos(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getPhotos();
+  }, [albumId]);
+
   return (
     <main className='container'>
       <h4>Lista de Fotos</h4>
-      <button
-        type='button'
-        className='button'
-        onClick={() => onCloseButtonClicked(false)}
-      >
-        Fechar
+      <button type='button' className='button' onClick={() => goBack()}>
+        Voltar
       </button>
       {photos.map((photo) => (
         <div className='album-box'>

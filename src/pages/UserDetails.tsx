@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+
+import jsonPlaceholderService from '../services/jsonPlaceholderService';
 
 export type UserProps = {
   id: number;
@@ -8,27 +11,35 @@ export type UserProps = {
   username: string;
 };
 
-interface UserDetailsProps {
-  user: UserProps;
-  onShowAlbumButtonClicked: (modalAlbumsActive: boolean, id: number) => void;
-  onCloseButtonClicked: (activeUser: UserProps) => void;
-}
+export const UserDetails = (): JSX.Element => {
+  const { userId } = useParams<{ userId: string }>();
+  const { push, location, goBack } = useHistory();
 
-export const UserDetails = ({
-  user,
-  onShowAlbumButtonClicked,
-  onCloseButtonClicked
-}: UserDetailsProps): JSX.Element => {
-  const { id, name, username, email, phone } = user;
+  const [user, setUser] = useState({} as UserProps);
+  const { name, username, email, phone } = user;
+
+  useEffect(() => {
+    const getUser = async (): Promise<void> => {
+      if (!Number(userId)) return;
+
+      try {
+        const response = await jsonPlaceholderService.getUserById(
+          Number(userId)
+        );
+        setUser(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUser();
+  }, [userId]);
+
   return (
     <main className='container'>
       <h4>Usuário - {name}</h4>
-      <button
-        type='button'
-        className='button'
-        onClick={() => onCloseButtonClicked({} as UserProps)}
-      >
-        Fechar
+      <button type='button' className='button' onClick={() => goBack()}>
+        Voltar
       </button>
       <div>
         <div>{name}</div>
@@ -38,7 +49,7 @@ export const UserDetails = ({
         <button
           type='button'
           className='button'
-          onClick={() => onShowAlbumButtonClicked(true, id)}
+          onClick={() => push(`${location.pathname}/albums`)}
         >
           ver álbum
         </button>

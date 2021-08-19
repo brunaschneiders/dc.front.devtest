@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import jsonPlaceholderService from '../services/jsonPlaceholderService';
 
 type UserProps = {
   id: number;
@@ -9,26 +12,41 @@ type UserProps = {
   website: string;
 };
 
-interface UsersListProps {
-  users: UserProps[];
-  onUserClicked: (id: number) => void;
-}
+export const UsersList = (): JSX.Element => {
+  const { push } = useHistory();
 
-export const UsersList = ({
-  users,
-  onUserClicked
-}: UsersListProps): JSX.Element => {
+  const [users, setUsers] = useState([] as UserProps[]);
+  const [filteredUsers, setFilteredUsers] = useState([] as UserProps[]);
   const [query, setQuery] = useState('');
 
-  let result = users;
-  if (query) {
-    const parsedQuery = query.toLowerCase();
-    result = users.filter(
-      (item) =>
-        item.name.toLowerCase().indexOf(parsedQuery) !== -1 ||
-        item.email.toLowerCase().indexOf(parsedQuery) !== -1
-    );
-  }
+  useEffect(() => {
+    const getUsers = async (): Promise<void> => {
+      try {
+        const response = await jsonPlaceholderService.getUsers();
+        setUsers(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUsers();
+  }, []);
+
+  useEffect(() => {
+    const handleFilterUsers = (): void => {
+      const parsedQuery = query.toLowerCase();
+      const result = users.filter(
+        (item) =>
+          item.name.toLowerCase().indexOf(parsedQuery) !== -1 ||
+          item.email.toLowerCase().indexOf(parsedQuery) !== -1
+      );
+
+      setFilteredUsers(result);
+    };
+    if (query) {
+      handleFilterUsers();
+    }
+  }, [users, query]);
 
   return (
     <>
@@ -52,7 +70,7 @@ export const UsersList = ({
           </tr>
         </thead>
         <tbody>
-          {result.map((item) => (
+          {(filteredUsers.length ? filteredUsers : users)?.map((item) => (
             <tr key={item.id}>
               <td>{item.name}</td>
               <td>{item.email}</td>
@@ -63,7 +81,7 @@ export const UsersList = ({
                 <button
                   type='button'
                   className='button'
-                  onClick={() => onUserClicked(item.id)}
+                  onClick={() => push(`usuarios/${item.id}`)}
                 >
                   ver detalhe do usuário
                 </button>
