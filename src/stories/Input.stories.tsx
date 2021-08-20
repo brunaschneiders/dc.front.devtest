@@ -18,7 +18,9 @@ export default {
     }
   },
   args: {
-    placeholder: 'Placeholder'
+    placeholder: 'Placeholder',
+    name: 'example',
+    ariaLabel: 'Example Input'
   }
 } as ComponentMeta<typeof Input>;
 
