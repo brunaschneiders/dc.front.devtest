@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": [
+      "es6",
       "dom",
       "dom.iterable",
       "esnext"
@@ -19,7 +20,10 @@
     "forceConsistentCasingInFileNames": true,
     "target": "es5",
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext"
+    "module": "esnext",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
   },
   "include": [
     "src"
