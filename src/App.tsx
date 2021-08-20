@@ -1,19 +1,17 @@
 import React from 'react';
-import { ThemeProvider, CssBaseline } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 
 import { Routes } from './routes';
 
-import { theme } from './styles/theme';
-import { GlobalCss } from './styles/global';
+import { useStyles } from './styles/main';
 import './styles/mainStyles.css';
 
 const App = (): JSX.Element => {
+  const { container } = useStyles();
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalCss />
-      <CssBaseline />
+    <Container className={container} component='main'>
       <Routes />
-    </ThemeProvider>
+    </Container>
   );
 };
 

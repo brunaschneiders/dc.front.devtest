@@ -4,7 +4,8 @@ import { theme } from './theme';
 export const GlobalCss = withStyles({
   '@global': {
     'html, body': {
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: theme.palette.primary.main,
+      margin: 0
     }
   }
 })(() => null);
