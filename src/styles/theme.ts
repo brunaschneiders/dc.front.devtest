@@ -16,5 +16,6 @@ export const theme = createTheme({
         body1: 'span'
       }
     }
-  }
+  },
+  spacing: 8
 });
