@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { Box } from '@material-ui/core';
 
-import { Input } from '../components';
+import { Input } from '../../components';
 
 export default {
   title: 'Form/Input',
