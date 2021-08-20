@@ -19,3 +19,17 @@ export const theme = createTheme({
   },
   spacing: 8
 });
+
+theme.typography.h1 = {
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.5rem'
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontSize: '2rem'
+  },
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.5rem'
+  },
+  fontWeight: 600
+};
