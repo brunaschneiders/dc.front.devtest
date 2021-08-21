@@ -3,6 +3,8 @@ import MaterialPagination, {
   PaginationProps as MaterialPaginationProps
 } from '@material-ui/lab/Pagination';
 
+import { useStyles } from './styles';
+
 type PagerProps = {
   count: number;
   startIndex: number;
@@ -24,6 +26,7 @@ export const Pagination = <T,>({
   defaultPage = 1,
   ...props
 }: PaginationProps<T>) => {
+  const classes = useStyles();
   const [pager, setPager] = useState({} as PagerProps);
 
   const handlePager = useCallback(
@@ -63,6 +66,7 @@ export const Pagination = <T,>({
       variant='outlined'
       defaultPage={defaultPage}
       onChange={(_, selectedPage) => handlePager(selectedPage)}
+      className={classes.pagination}
       {...props}
     />
   );
