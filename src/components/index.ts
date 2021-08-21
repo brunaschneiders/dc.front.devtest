@@ -6,3 +6,4 @@ export * from './Pagination/index';
 export * from './SimpleTable';
 export * from './TitlebarImageList';
 export * from './text/Title';
+export * from './UserCard';
