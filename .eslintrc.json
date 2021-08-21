@@ -25,6 +25,8 @@
         "endOfLine": "auto"
       }
     ],
+    "no-return-assign":"off",
+    "no-param-reassign":"off",
     "no-use-before-define": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
