@@ -14,7 +14,6 @@ export const useStyles = makeStyles((theme) => ({
   emptyTableBox: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: theme.spacing(2)
+    justifyContent: 'center'
   }
 }));

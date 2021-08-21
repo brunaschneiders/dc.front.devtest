@@ -4,6 +4,7 @@ import { Box } from '@material-ui/core';
 
 import { SimpleTable, ColumnDefinitionType } from '../../../components';
 
+import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
 
 export type UserTableProps = {
@@ -51,7 +52,7 @@ export const UsersTable = ({ users }: UsersTableProps): JSX.Element => {
   ];
 
   return (
-    <Box className={classes.tableBox}>
+    <Box className={classes.tableBox} marginTop={theme.spacing(0.5)}>
       <SimpleTable
         data={users}
         columns={tableColumns}
