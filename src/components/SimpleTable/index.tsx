@@ -1,0 +1,45 @@
+import React, { ReactNode } from 'react';
+
+import { Table, Paper, Typography, Box } from '@material-ui/core';
+
+import { TableHeader } from './TableHeader';
+import { TableRows } from './TableRows';
+
+import { useStyles } from './styles';
+
+export type ColumnDefinitionType<T, K extends keyof T> = {
+  key: K;
+  header: string;
+};
+
+interface SimpleTableProps<T, K extends keyof T> {
+  data: Array<T>;
+  columns: Array<ColumnDefinitionType<T, K>>;
+  actionButton?: ReactNode;
+}
+
+export const SimpleTable = <T, K extends keyof T>({
+  data,
+  columns,
+  actionButton
+}: SimpleTableProps<T, K>): JSX.Element => {
+  const { root, table, emptyTableBox } = useStyles();
+
+  return (
+    <Paper className={root}>
+      <Table className={table} size='small'>
+        <TableHeader columns={columns} hasActionButtonColumn={!!actionButton} />
+        {!!data.length && <TableRows data={data} columns={columns} />}
+      </Table>
+      {!data.length && (
+        <Box className={emptyTableBox}>
+          <Typography>Sem resultados...</Typography>
+        </Box>
+      )}
+    </Paper>
+  );
+};
+
+SimpleTable.defaultProps = {
+  actionButton: null
+};
