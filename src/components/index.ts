@@ -1,3 +1,4 @@
+export * from './Button';
 export * from './form/Input';
 export * from './Header';
 export * from './SimpleTable';
