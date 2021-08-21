@@ -21,7 +21,13 @@ type UserProps = {
   email: string;
   phone: string;
   website: string;
-  qtyAlbums: number;
+  albumsQty: number;
+};
+
+type AlbumProps = {
+  id: number;
+  userId: number;
+  title: string;
 };
 
 const tableColumns: ColumnDefinitionType<UserProps, keyof UserProps>[] = [
@@ -42,7 +48,7 @@ const tableColumns: ColumnDefinitionType<UserProps, keyof UserProps>[] = [
     header: 'WebSite'
   },
   {
-    key: 'qtyAlbums',
+    key: 'albumsQty',
     header: 'Quantidade Álbuns'
   }
 ];
@@ -52,6 +58,7 @@ export const UsersList = (): JSX.Element => {
   const { tableBox } = useStyles();
 
   const [users, setUsers] = useState([] as UserProps[]);
+  const [parsedUsers, setParsedUsers] = useState([] as UserProps[]);
   const [filteredUsers, setFilteredUsers] = useState([] as UserProps[]);
   const [query, setQuery] = useState('');
 
@@ -69,9 +76,29 @@ export const UsersList = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
+    const handleParseUsers = async (): Promise<void> => {
+      try {
+        const tempParsedUsers = [...users];
+        const albums: AlbumProps[] = await jsonPlaceholderService.getAlbums();
+        tempParsedUsers.forEach((user) => {
+          user.albumsQty = albums.filter(
+            (album) => album.userId === user.id
+          ).length;
+        });
+
+        setParsedUsers(tempParsedUsers);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    handleParseUsers();
+  }, [users]);
+
+  useEffect(() => {
     const handleFilterUsers = (): void => {
       const parsedQuery = query.toLowerCase();
-      const result = users.filter(
+      const result = parsedUsers.filter(
         (item) =>
           item.name.toLowerCase().indexOf(parsedQuery) !== -1 ||
           item.email.toLowerCase().indexOf(parsedQuery) !== -1
@@ -81,7 +108,7 @@ export const UsersList = (): JSX.Element => {
     };
 
     handleFilterUsers();
-  }, [users, query]);
+  }, [parsedUsers, query]);
 
   return (
     <>
