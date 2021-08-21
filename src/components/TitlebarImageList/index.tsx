@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageList, Link } from '@material-ui/core';
+import { ImageList, Link, Box } from '@material-ui/core';
 
 import { ImageListItem } from './ImageListItem';
 
@@ -39,7 +39,9 @@ export const TitlebarImageList = ({
             <ImageListItem url={item.url} title={item.title} margin={gap} />
           </Link>
         ) : (
-          <ImageListItem url={item.url} title={item.title} margin={gap} />
+          <Box>
+            <ImageListItem url={item.url} title={item.title} margin={gap} />
+          </Box>
         )
       )}
     </ImageList>
