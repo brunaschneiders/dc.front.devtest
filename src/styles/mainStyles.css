@@ -1,29 +1,4 @@
-table {
-  font-family: Arial, sans-serif;
-  text-align: left;
-  border-collapse: collapse;
-  margin: auto
-}
-th,
-td {
-  border: 1px solid grey;
-  padding: 8px;
-}
-th {
-  white-space: nowrap;
-}
-dt {
-  font-weight: 700;
-  float: left;
-  width: 120px;
-}
-dd {
-  margin-left: 120px;
-  margin-bottom: 4px;
-}
-
-
-.button {
+/* .button {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
@@ -69,4 +44,6 @@ footer {
 
 .pagination {
   display: flex;
-}
+} */
+
+
