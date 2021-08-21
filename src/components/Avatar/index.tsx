@@ -18,7 +18,14 @@ export const Avatar = ({
 }: AvatarProps): JSX.Element => {
   const classes = useStyles();
 
-  return <MaterialAvatar className={classes[size]} src={url} {...props} />;
+  return (
+    <MaterialAvatar
+      className={classes[size]}
+      src={url}
+      alt='Avatar do Usuário'
+      {...props}
+    />
+  );
 };
 
 Avatar.defaultProps = {
