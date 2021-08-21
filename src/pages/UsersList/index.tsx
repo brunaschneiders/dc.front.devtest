@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Search as SearchIcon } from '@material-ui/icons';
-import { Box } from '@material-ui/core';
 
-import {
-  Input,
-  Header,
-  SimpleTable,
-  ColumnDefinitionType
-} from '../../components';
+import { Input, Header } from '../../components';
+import { UsersTable, UserTableProps } from './UsersTable';
 
 import jsonPlaceholderService from '../../services/jsonPlaceholderService';
-
-import { useStyles } from './styles';
 
 type UserProps = {
   id: number;
@@ -21,7 +13,6 @@ type UserProps = {
   email: string;
   phone: string;
   website: string;
-  albumsQty: number;
 };
 
 type AlbumProps = {
@@ -30,36 +21,10 @@ type AlbumProps = {
   title: string;
 };
 
-const tableColumns: ColumnDefinitionType<UserProps, keyof UserProps>[] = [
-  {
-    key: 'name',
-    header: 'Nome'
-  },
-  {
-    key: 'email',
-    header: 'Email'
-  },
-  {
-    key: 'phone',
-    header: 'Telefone'
-  },
-  {
-    key: 'website',
-    header: 'WebSite'
-  },
-  {
-    key: 'albumsQty',
-    header: 'Quantidade Álbuns'
-  }
-];
-
 export const UsersList = (): JSX.Element => {
-  const { push } = useHistory();
-  const { tableBox } = useStyles();
-
   const [users, setUsers] = useState([] as UserProps[]);
-  const [parsedUsers, setParsedUsers] = useState([] as UserProps[]);
-  const [filteredUsers, setFilteredUsers] = useState([] as UserProps[]);
+  const [parsedUsers, setParsedUsers] = useState([] as UserTableProps[]);
+  const [filteredUsers, setFilteredUsers] = useState([] as UserTableProps[]);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -78,12 +43,14 @@ export const UsersList = (): JSX.Element => {
   useEffect(() => {
     const handleParseUsers = async (): Promise<void> => {
       try {
-        const tempParsedUsers = [...users];
+        const tempParsedUsers: UserTableProps[] = [];
+
         const albums: AlbumProps[] = await jsonPlaceholderService.getAlbums();
-        tempParsedUsers.forEach((user) => {
-          user.albumsQty = albums.filter(
-            (album) => album.userId === user.id
-          ).length;
+        users.forEach((user) => {
+          tempParsedUsers.push({
+            ...user,
+            albumsQty: albums.filter((album) => album.userId === user.id).length
+          });
         });
 
         setParsedUsers(tempParsedUsers);
@@ -126,16 +93,7 @@ export const UsersList = (): JSX.Element => {
         }
       />
 
-      <Box className={tableBox}>
-        <SimpleTable
-          data={filteredUsers}
-          columns={tableColumns}
-          actionButton={{
-            text: 'Detalhes',
-            onActionButtonClicked: (rowData) => push(`usuarios/${rowData.id}`)
-          }}
-        />
-      </Box>
+      <UsersTable users={filteredUsers} />
     </>
   );
 };
