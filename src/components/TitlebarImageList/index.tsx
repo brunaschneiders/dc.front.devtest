@@ -39,7 +39,7 @@ export const TitlebarImageList = ({
             <ImageListItem url={item.url} title={item.title} margin={gap} />
           </Link>
         ) : (
-          <Box>
+          <Box key={item.id}>
             <ImageListItem url={item.url} title={item.title} margin={gap} />
           </Box>
         )
