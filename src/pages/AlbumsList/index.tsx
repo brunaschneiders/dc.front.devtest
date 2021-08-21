@@ -68,7 +68,7 @@ export const AlbumsList = (): JSX.Element => {
 
           tempParsedAlbums.push({
             ...album,
-            src: albumPhotos[0].url,
+            url: albumPhotos[0].url,
             href: `${location.pathname}/${album.id}`
           });
         });
