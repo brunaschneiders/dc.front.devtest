@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { InputBase, InputBaseProps, Box, FormLabel } from '@material-ui/core';
+import { InputBase, InputBaseProps, Box } from '@material-ui/core';
 
 import { useStyles } from './styles';
 
