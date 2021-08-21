@@ -2,7 +2,7 @@ import React from 'react';
 
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
 
-import { ColumnDefinitionType, Button } from '../..';
+import { ColumnDefinitionType, Button } from '../../..';
 
 import { useStyles } from './styles';
 
