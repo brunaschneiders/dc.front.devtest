@@ -47,7 +47,7 @@ export const UsersTable = ({ users }: UsersTableProps): JSX.Element => {
     },
     {
       key: 'albumsQty',
-      header: 'Quantidade Álbuns'
+      header: 'Qtde Álbuns'
     }
   ];
 
