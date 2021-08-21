@@ -1,3 +1,4 @@
+export * from './Avatar';
 export * from './Button';
 export * from './form/Input';
 export * from './Header';
