@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Box } from '@material-ui/core';
 
@@ -15,8 +15,6 @@ export const TitlebarPhotosList = ({
   photos
 }: TitlebarPhotosListProps): JSX.Element => {
   const [currentPhotos, setCurrentPhotos] = useState(photos);
-  const [gap, setGap] = useState(3);
-  const [cols, setCols] = useState(4);
   const screenSize = {
     mobile: useMediaQuery(theme.breakpoints.down(400)),
     xs: useMediaQuery(theme.breakpoints.down('xs')),
@@ -25,29 +23,25 @@ export const TitlebarPhotosList = ({
     xl: useMediaQuery(theme.breakpoints.up('xl'))
   };
 
-  useEffect(() => {
-    const handleResponsiveData = () => {
-      const { mobile, xs, md, lg, xl } = screenSize;
-      if (mobile) {
-        setGap(2);
-        setCols(1);
-      } else if (xs) {
-        setGap(2.5);
-        setCols(2);
-      } else if (md) {
-        setGap(2.5);
-        setCols(3);
-      } else if (lg) {
-        setGap(3);
-        setCols(4);
-      } else if (xl) {
-        setGap(3.5);
-        setCols(5);
-      }
-    };
-
-    handleResponsiveData();
-  }, [screenSize]);
+  const getResponsiveData = () => {
+    const { mobile, xs, md, lg, xl } = screenSize;
+    if (mobile) {
+      return { gap: 2, cols: 1 };
+    }
+    if (xs) {
+      return { gap: 2.5, cols: 2 };
+    }
+    if (md) {
+      return { gap: 2.5, cols: 3 };
+    }
+    if (lg) {
+      return { gap: 3, cols: 4 };
+    }
+    if (xl) {
+      return { gap: 3.5, cols: 5 };
+    }
+    return { gap: 3, cols: 4 };
+  };
 
   const handleChangePage = useCallback((itemsOfCurrentPage: PhotoProps[]) => {
     setCurrentPhotos(itemsOfCurrentPage);
@@ -55,7 +49,11 @@ export const TitlebarPhotosList = ({
 
   return (
     <Box marginTop={theme.spacing(0.5)}>
-      <TitlebarImageList imageList={currentPhotos} gap={gap} cols={cols} />
+      <TitlebarImageList
+        imageList={currentPhotos}
+        gap={getResponsiveData().gap}
+        cols={getResponsiveData().cols}
+      />
 
       <Box paddingY={4}>
         <Pagination
