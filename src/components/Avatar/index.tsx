@@ -13,11 +13,12 @@ interface AvatarProps extends MaterialAvatarProps {
 
 export const Avatar = ({
   size = 'medium',
+  url,
   ...props
 }: AvatarProps): JSX.Element => {
   const classes = useStyles();
 
-  return <MaterialAvatar className={classes[size]} {...props} />;
+  return <MaterialAvatar className={classes[size]} src={url} {...props} />;
 };
 
 Avatar.defaultProps = {
