@@ -15,7 +15,10 @@ export type ColumnDefinitionType<T, K extends keyof T> = {
 interface SimpleTableProps<T, K extends keyof T> {
   data: Array<T>;
   columns: Array<ColumnDefinitionType<T, K>>;
-  actionButton?: ReactNode;
+  actionButton?: {
+    text: string;
+    onActionButtonClicked: (rowData: T) => void;
+  };
 }
 
 export const SimpleTable = <T, K extends keyof T>({
@@ -29,7 +32,13 @@ export const SimpleTable = <T, K extends keyof T>({
     <Paper className={root}>
       <Table className={table} size='small'>
         <TableHeader columns={columns} hasActionButtonColumn={!!actionButton} />
-        {!!data.length && <TableRows data={data} columns={columns} />}
+        {data.length && (
+          <TableRows
+            data={data}
+            columns={columns}
+            actionButton={actionButton}
+          />
+        )}
       </Table>
       {!data.length && (
         <Box className={emptyTableBox}>

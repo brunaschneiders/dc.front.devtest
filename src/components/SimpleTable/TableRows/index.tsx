@@ -1,15 +1,18 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-import { TableBody, TableCell, TableRow, Link } from '@material-ui/core';
+import { TableBody, TableCell, TableRow } from '@material-ui/core';
 
-import { ColumnDefinitionType } from '..';
+import { ColumnDefinitionType, Button } from '../..';
 
 import { useStyles } from './styles';
 
 type TableRowsProps<T, K extends keyof T> = {
   data: Array<T>;
   columns: Array<ColumnDefinitionType<T, K>>;
-  actionButton?: ReactNode;
+  actionButton?: {
+    text: string;
+    onActionButtonClicked: (rowData: T) => void;
+  };
 };
 
 export const TableRows = <T, K extends keyof T>({
@@ -25,7 +28,16 @@ export const TableRows = <T, K extends keyof T>({
         {columns.map((column) => {
           return <TableCell key={column.header}>{row[column.key]}</TableCell>;
         })}
-        {!!actionButton && <TableCell>{actionButton}</TableCell>}
+        {!!actionButton && (
+          <TableCell>
+            <Button
+              text={actionButton.text}
+              name='actionButton'
+              size='small'
+              onClick={() => actionButton.onActionButtonClicked(row)}
+            />
+          </TableCell>
+        )}
       </TableRow>
     );
   });
