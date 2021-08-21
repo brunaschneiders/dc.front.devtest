@@ -32,7 +32,7 @@ export const SimpleTable = <T, K extends keyof T>({
     <Paper className={root}>
       <Table className={table} size='small'>
         <TableHeader columns={columns} hasActionButtonColumn={!!actionButton} />
-        {data.length && (
+        {!!data.length && (
           <TableRows
             data={data}
             columns={columns}
@@ -41,7 +41,7 @@ export const SimpleTable = <T, K extends keyof T>({
         )}
       </Table>
       {!data.length && (
-        <Box className={emptyTableBox}>
+        <Box className={emptyTableBox} marginTop={2}>
           <Typography>Sem resultados...</Typography>
         </Box>
       )}
