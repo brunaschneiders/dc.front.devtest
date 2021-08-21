@@ -3,7 +3,7 @@ import { createTheme } from '@material-ui/core/styles';
 export const theme = createTheme({
   palette: {
     primary: {
-      light: '#FBC7B7',
+      light: '#F9D7C9',
       main: '#FE5200',
       dark: '#E6530F'
     }
@@ -25,11 +25,11 @@ theme.typography.h1 = {
     fontSize: '1.5rem'
   },
   [theme.breakpoints.between('sm', 'md')]: {
-    fontSize: '2rem'
+    fontSize: '1.5rem'
   },
 
   [theme.breakpoints.up('md')]: {
-    fontSize: '2.5rem'
+    fontSize: '2rem'
   },
   fontWeight: 600
 };
