@@ -27,6 +27,11 @@ export default {
     return response.data;
   },
 
+  async getPhotos() {
+    const response = await api.get(endpoints.photos);
+    return response.data;
+  },
+
   async getPhotosByAlbumId(albumId: number) {
     const response = await api.get(`${endpoints.photos}?albumId=${albumId}`);
     return response.data;
