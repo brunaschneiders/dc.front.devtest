@@ -7,7 +7,7 @@ import { useStyles } from './styles';
 
 type ImageListItemProps = {
   id: number;
-  src: string;
+  url: string;
   title: string;
   href?: string;
 };
@@ -36,10 +36,10 @@ export const TitlebarImageList = ({
       {imageList.map((item) =>
         item.href ? (
           <Link key={item.id} href={item.href}>
-            <ImageListItem src={item.src} title={item.title} margin={gap} />
+            <ImageListItem url={item.url} title={item.title} margin={gap} />
           </Link>
         ) : (
-          <ImageListItem src={item.src} title={item.title} margin={gap} />
+          <ImageListItem url={item.url} title={item.title} margin={gap} />
         )
       )}
     </ImageList>

@@ -8,18 +8,18 @@ import {
 import { useStyles } from './styles';
 
 interface ImageListItemProps {
-  src: string;
+  url: string;
   title: string;
   margin?: number;
 }
 
-export const ImageListItem = ({ src, title, margin }: ImageListItemProps) => {
+export const ImageListItem = ({ url, title, margin }: ImageListItemProps) => {
   const classes = useStyles();
 
   return (
     <MaterialImageListItem className={classes.imageContainer}>
       <Box className={classes.imageBox} m={margin}>
-        <img className={classes.image} src={src} alt={title} />
+        <img className={classes.image} src={url} alt={title} />
 
         <ImageListItemBar title={title} />
       </Box>

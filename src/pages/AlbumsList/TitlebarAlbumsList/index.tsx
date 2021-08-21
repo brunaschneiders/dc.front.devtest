@@ -8,7 +8,7 @@ import { TitlebarImageList } from '../../../components';
 import { theme } from '../../../styles/theme';
 
 export type AlbumListProps = {
-  src: string;
+  url: string;
   href: string;
 } & AlbumProps;
 
