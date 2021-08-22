@@ -27,7 +27,7 @@ export const VerticalTable = ({ data }: VerticalTableProps): JSX.Element => {
       <Table className={classes.table}>
         <TableBody>
           {data.map((row) => (
-            <TableRow className={classes.row}>
+            <TableRow key={row.header} className={classes.row}>
               <TableCell component='th' variant='head'>
                 {row.header}
               </TableCell>
