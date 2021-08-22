@@ -6,7 +6,8 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(5),
 
     [theme.breakpoints.up(800)]: {
-      height: 'calc(100vh - 12.5rem)'
+      height: 'auto',
+      maxHeight: 'calc(100vh - 12.5rem)'
     },
 
     [theme.breakpoints.down(800)]: {
