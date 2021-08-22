@@ -97,7 +97,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-### 🧭 Rodando a aplicação e a documentação
+### 🧭 Rodando a aplicação, documentação e testes
 
 ```bash
 # Clone este repositório
@@ -114,10 +114,13 @@ $ yarn start
 
 # A aplicação será aberta na porta:3000 - acesse http://localhost:3000
 
-# Execute a documentação em modo de desenvolvimento
+# Para executar a documentação em modo de desenvolvimento:
 $ yarn storybook
 
-# A aplicação será aberta na porta:6006 - acesse http://localhost:6006
+# A Documentação será aberta na porta:6006 - acesse http://localhost:6006
+
+# Para executar os testes:
+$ yarn test
 ```
 
 ## Autor
