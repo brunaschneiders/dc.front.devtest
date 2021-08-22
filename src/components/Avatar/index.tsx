@@ -23,6 +23,7 @@ export const Avatar = ({
       className={classes[size]}
       src={url}
       alt='Avatar do Usuário'
+      data-testid='avatar-element'
       {...props}
     />
   );

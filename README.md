@@ -25,6 +25,8 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 - [Storybook](https://storybook.js.org/)
 - [Chromatic](https://www.chromatic.com/)
 - [Material-UI](https://material-ui.com/pt/)
+- [JEST](https://jestjs.io/pt-BR/)
+- [Testing Library](https://testing-library.com/)
 
 ## <a id="tarefas"></a> 🔝 Tarefas
 
@@ -33,8 +35,9 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 - [x] Melhorar estrutura de comunicação com API.
 - [x] Mover telas do projeto para suas respectivas rotas.
 - [x] Redesign da aplicação
-- [ ] Melhorar acessibilidade
-- [ ] Testes Unitários
+- [x] Melhorar acessibilidade
+- [x] Testes Unitários - componentes
+- [ ] Testes Unitários - páginas
 - [ ] Testes de Integração
 - [ ] Gerenciamento de estado por contexto
 - [ ] Teste end-to-end

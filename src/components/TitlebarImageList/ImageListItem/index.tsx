@@ -17,7 +17,10 @@ export const ImageListItem = ({ url, title, margin }: ImageListItemProps) => {
   const classes = useStyles();
 
   return (
-    <MaterialImageListItem className={classes.imageContainer}>
+    <MaterialImageListItem
+      className={classes.imageContainer}
+      data-testid='image-list-item-element'
+    >
       <Box className={classes.imageBox} m={margin}>
         <img className={classes.image} src={url} alt={title} />
 
