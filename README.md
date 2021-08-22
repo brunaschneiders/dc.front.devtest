@@ -44,31 +44,35 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 
 ### Tela de lista de usuários
 
-- Versão Web <br/>
-  ![](appDemonstrationImages/usersListWeb.png)
-- Versão Mobile <br/>
-  ![](appDemonstrationImages/usersListMobile.png)
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/usersListWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/usersListMobile.png" height="300">
 
 ### Tela de detalhe do usuário
 
-- Versão Web <br/>
-  ![](appDemonstrationImages/userDetailsWeb.png)
-- Versão Mobile <br/>
-  ![](appDemonstrationImages/userDetailsMobile.png)
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/userDetailsWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/userDetailsMobile.png" height="300">
 
 ### Tela de álbuns do usuário
 
-- Versão Web <br/>
-  ![](appDemonstrationImages/albumsListWeb.png)
-- Versão Mobile <br/>
-  ![](appDemonstrationImages/albumsListMobile.png)
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/albumsListWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/albumsListMobile.png" height="300">
 
 ### Tela de detalhe do álbum
 
-- Versão Web <br/>
-  ![](appDemonstrationImages/photosListWeb.png)
-- Versão Mobile <br/>
-  ![](appDemonstrationImages/photosListMobile.png)
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/photosListWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/photosListMobile.png" height="300">
 
 ## <a id="documentacao"></a> 📄 Documentação
 
