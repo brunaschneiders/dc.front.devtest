@@ -49,7 +49,7 @@ export const UsersTable = ({ users }: UsersTableProps): JSX.Element => {
   ];
 
   return (
-    <Box className={classes.tableBox} marginTop={theme.spacing(0.5)}>
+    <Box className={classes.tableBox} component='main'>
       <SimpleTable
         data={users}
         columns={tableColumns}

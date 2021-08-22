@@ -6,6 +6,7 @@ import { AlbumProps } from '../..';
 import { TitlebarImageList } from '../../../components';
 
 import { theme } from '../../../styles/theme';
+import { useStyles } from './styles';
 
 export type AlbumListProps = {
   url: string;
@@ -19,6 +20,7 @@ interface TitlebarAlbumsListProps {
 export const TitlebarAlbumsList = ({
   albums
 }: TitlebarAlbumsListProps): JSX.Element => {
+  const classes = useStyles();
   const screenSize = {
     mobile: useMediaQuery(theme.breakpoints.down(400)),
     xs: useMediaQuery(theme.breakpoints.down('xs')),
@@ -48,7 +50,7 @@ export const TitlebarAlbumsList = ({
   };
 
   return (
-    <Box marginTop={theme.spacing(0.5)}>
+    <Box className={classes.box} component='main'>
       <TitlebarImageList
         imageList={albums}
         gap={getResponsiveData().gap}

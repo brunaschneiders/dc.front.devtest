@@ -60,7 +60,7 @@ export const UserDetails = (): JSX.Element => {
         }
       />
 
-      <Box className={classes.box} marginTop={theme.spacing(0.5)}>
+      <Box className={classes.box} component='main'>
         <Box className={classes.userCardBox}>
           <UserCard
             name={user.name}

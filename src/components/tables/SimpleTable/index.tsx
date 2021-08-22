@@ -41,7 +41,7 @@ export const SimpleTable = <T, K extends keyof T>({
         )}
       </Table>
       {!data.length && (
-        <Box className={classes.emptyTableBox} marginTop={2}>
+        <Box className={classes.emptyTableBox}>
           <Typography>Sem resultados...</Typography>
         </Box>
       )}

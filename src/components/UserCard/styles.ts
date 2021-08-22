@@ -18,12 +18,15 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
+    margin: `${theme.spacing(3)}px 0`,
 
     '&& h4': {
-      fontWeight: 600
+      textAlign: 'center',
+      marginBottom: theme.spacing(0.5)
     },
     '&& span': {
-      color: theme.palette.grey[500]
+      color: theme.palette.grey[500],
+      textAlign: 'center'
     }
   }
 }));

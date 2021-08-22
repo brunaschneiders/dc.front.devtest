@@ -6,6 +6,7 @@ import { PhotoProps } from '../..';
 import { TitlebarImageList, Pagination } from '../../../components';
 
 import { theme } from '../../../styles/theme';
+import { useStyles } from './styles';
 
 interface TitlebarPhotosListProps {
   photos: PhotoProps[];
@@ -14,6 +15,7 @@ interface TitlebarPhotosListProps {
 export const TitlebarPhotosList = ({
   photos
 }: TitlebarPhotosListProps): JSX.Element => {
+  const classes = useStyles();
   const [currentPhotos, setCurrentPhotos] = useState(photos);
   const screenSize = {
     mobile: useMediaQuery(theme.breakpoints.down(400)),
@@ -48,14 +50,14 @@ export const TitlebarPhotosList = ({
   }, []);
 
   return (
-    <Box marginTop={theme.spacing(0.5)}>
+    <Box className={classes.box} component='main'>
       <TitlebarImageList
         imageList={currentPhotos}
         gap={getResponsiveData().gap}
         cols={getResponsiveData().cols}
       />
 
-      <Box paddingY={4}>
+      <Box className={classes.paginationBox}>
         <Pagination
           items={photos}
           onHandlePageChanged={handleChangePage}

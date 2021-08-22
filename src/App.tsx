@@ -9,7 +9,7 @@ import './styles/mainStyles.css';
 const App = (): JSX.Element => {
   const classes = useStyles();
   return (
-    <Container className={classes.container} component='main'>
+    <Container className={classes.container}>
       <Routes />
     </Container>
   );

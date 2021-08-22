@@ -22,7 +22,7 @@ export const UserCard = ({
   return (
     <Box className={classes.box} {...props}>
       <Avatar size='xlarge' />
-      <Box className={classes.userData} my={2.5}>
+      <Box className={classes.userData}>
         <Typography variant='subtitle1'>{name}</Typography>
         <Typography>{company}</Typography>
       </Box>

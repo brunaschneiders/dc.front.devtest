@@ -21,15 +21,23 @@ export const theme = createTheme({
 });
 
 theme.typography.h1 = {
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '1.5rem'
-  },
-  [theme.breakpoints.between('sm', 'md')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '1.5rem'
   },
 
   [theme.breakpoints.up('md')]: {
     fontSize: '2rem'
+  },
+  fontWeight: 600
+};
+
+theme.typography.subtitle1 = {
+  [theme.breakpoints.down('md')]: {
+    fontSize: '1rem'
+  },
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.2rem'
   },
   fontWeight: 600
 };
