@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Box } from '@material-ui/core';
 
 import { UserCard } from '../components';
 
@@ -14,7 +15,9 @@ export default {
 } as ComponentMeta<typeof UserCard>;
 
 const Template: ComponentStory<typeof UserCard> = (args) => (
-  <UserCard {...args} />
+  <div style={{ width: '20rem' }}>
+    <UserCard {...args} />
+  </div>
 );
 
 export const Default = Template.bind({});
