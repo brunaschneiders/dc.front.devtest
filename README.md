@@ -4,20 +4,17 @@
 
 ## <a id="sobre"></a> ℹ Sobre
 
-<p> 🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos.</p>
+🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos.
 
-# Tabela de conteúdos
-
-<!--ts-->
+## <a id="conteudo"></a> Tabela de conteúdos
 
 - [Sobre](#sobre)
-- [Tabela de Conteudo](#tabela-de-conteudo)
+- [Tabela de Conteudo](#conteudo)
 - [Tecnologias](#tecnologias)
 - [Tarefas](#tarefas)
 - [Demonstração](#demonstracao)
 - [Documentação](#documentacao)
 - [Como Executar](#executar)
-<!--te-->
 
 ## <a id="tecnologias"></a> 🛠 Principais tecnologias
 
@@ -77,13 +74,13 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 
 ### Storybook
 
-<p>A documentação dos componentes do projeto é feita através do storybook. Para rodar localmente e poder visualizá-la, basta seguir os seguintes passos definidos para [rodar o projeto](#executar)</p>
+A documentação dos componentes do projeto é feita através do storybook. Para rodar localmente e poder visualizá-la, basta seguir os seguintes passos definidos para [executar o projeto](#executar)
 
 ### Chromatic
 
-<p>Além disso, a documentação também está publicada através do [Chromatic](https://www.chromatic.com/), uma ferramenta que facilita o trabalho colaborativo através da automatização da coleta de feedbacks sobre a UI, teste visual e consulta à documentação, permitindo uma interação mais rápida e com menos trabalho manual. </p>
+Além disso, a documentação também está publicada através do [Chromatic](https://www.chromatic.com/), uma ferramenta que facilita o trabalho colaborativo através da automatização da coleta de feedbacks sobre a UI, teste visual e consulta à documentação, permitindo uma interação mais rápida e com menos trabalho manual.
 
-<p>Para acessar a documentação do Chromatic, basta realizar o login e selecionar o projeto. Todos os colaboradores desse repositório também possuem acesso a esta ferramenta. Outra opção é acessar a aplicação através deste [invite para a biblioteca de componentes](https://chromatic.com/library?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor), [lista de builds](https://www.chromatic.com/builds?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor) ou através do [link para o Storybook](https://<branch>--611eafce2a53eb003a4bc7a8.chromatic.com).</p>
+Para acessar a documentação do Chromatic, basta realizar o login e selecionar o projeto. Todos os colaboradores desse repositório também possuem acesso a esta ferramenta. Outra opção é acessar a aplicação através deste [invite para a biblioteca de componentes](https://chromatic.com/library?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor), [lista de builds](https://www.chromatic.com/builds?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor) ou através do [link para o Storybook](https://<branch>--611eafce2a53eb003a4bc7a8.chromatic.com).
 
 ## 🚀 <a id="executar"></a> Como executar o projeto
 
@@ -113,7 +110,7 @@ $ yarn start
 # Execute a documentação em modo de desenvolvimento
 $ yarn storybook
 
-# A aplicação será aberta na porta:3000 - acesse http://localhost:6006
+# A aplicação será aberta na porta:6006 - acesse http://localhost:6006
 ```
 
 ## Autor
