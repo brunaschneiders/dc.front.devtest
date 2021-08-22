@@ -80,7 +80,7 @@ A documentação dos componentes do projeto é feita através do storybook. Para
 
 Além disso, a documentação também está publicada através do [Chromatic](https://www.chromatic.com/), uma ferramenta que facilita o trabalho colaborativo através da automatização da coleta de feedbacks sobre a UI, teste visual e consulta à documentação, permitindo uma interação mais rápida e com menos trabalho manual.
 
-Para acessar a documentação do Chromatic, basta realizar o login e selecionar o projeto. Todos os colaboradores desse repositório também possuem acesso a esta ferramenta. Outra opção é acessar a aplicação através deste [invite para a biblioteca de componentes](https://chromatic.com/library?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor), [lista de builds](https://www.chromatic.com/builds?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor) ou através do [link para o Storybook](https://<branch>--611eafce2a53eb003a4bc7a8.chromatic.com).
+Para acessar a documentação do Chromatic, basta realizar o login e selecionar o projeto. Todos os colaboradores desse repositório também possuem acesso a esta ferramenta. Outra opção é acessar a aplicação através deste [invite para a biblioteca de componentes](https://chromatic.com/library?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor), [lista de builds](https://www.chromatic.com/builds?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor) ou através do [link para o Storybook](https://app-refactor--611eafce2a53eb003a4bc7a8.chromatic.com).
 
 ## 🚀 <a id="executar"></a> Como executar o projeto
 
