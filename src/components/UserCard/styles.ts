@@ -11,7 +11,8 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow:
       '0 10px 13px -6px #0003, 0 20px 31px 3px #00000024, 0 8px 38px 7px #0000001f',
     borderRadius: '0.5rem',
-    width: '100%'
+    width: '100%',
+    height: '100%'
   },
   userData: {
     display: 'flex',
