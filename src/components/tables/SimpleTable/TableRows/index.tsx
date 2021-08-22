@@ -2,13 +2,13 @@ import React from 'react';
 
 import { TableBody, TableCell, TableRow } from '@material-ui/core';
 
-import { ColumnDefinitionType, Button } from '../../..';
+import { ColumnProps, Button } from '../../..';
 
 import { useStyles } from './styles';
 
 type TableRowsProps<T, K extends keyof T> = {
   data: Array<T>;
-  columns: Array<ColumnDefinitionType<T, K>>;
+  columns: Array<ColumnProps<T, K>>;
   actionButton?: {
     text: string;
     onActionButtonClicked: (rowData: T) => void;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
-import { SimpleTable, ColumnDefinitionType } from '../../../components';
+import { SimpleTable, ColumnProps } from '../../../components';
 
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
@@ -25,10 +25,7 @@ export const UsersTable = ({ users }: UsersTableProps): JSX.Element => {
   const { push } = useHistory();
   const classes = useStyles();
 
-  const tableColumns: ColumnDefinitionType<
-    UserTableProps,
-    keyof UserTableProps
-  >[] = [
+  const tableColumns: ColumnProps<UserTableProps, keyof UserTableProps>[] = [
     {
       key: 'name',
       header: 'Nome'

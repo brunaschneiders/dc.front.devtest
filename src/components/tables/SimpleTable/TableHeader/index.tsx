@@ -2,12 +2,12 @@ import React from 'react';
 
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
 
-import { ColumnDefinitionType } from '..';
+import { ColumnProps } from '..';
 
 import { useStyles } from './styles';
 
 type TableHeaderProps<T, K extends keyof T> = {
-  columns: Array<ColumnDefinitionType<T, K>>;
+  columns: Array<ColumnProps<T, K>>;
   hasActionButtonColumn?: boolean;
 };
 

@@ -7,14 +7,14 @@ import { TableRows } from './TableRows';
 
 import { useStyles } from './styles';
 
-export type ColumnDefinitionType<T, K extends keyof T> = {
+export type ColumnProps<T, K extends keyof T> = {
   key: K;
   header: string;
 };
 
 interface SimpleTableProps<T, K extends keyof T> {
   data: Array<T>;
-  columns: Array<ColumnDefinitionType<T, K>>;
+  columns: Array<ColumnProps<T, K>>;
   actionButton?: {
     text: string;
     onActionButtonClicked: (rowData: T) => void;
@@ -26,11 +26,11 @@ export const SimpleTable = <T, K extends keyof T>({
   columns,
   actionButton
 }: SimpleTableProps<T, K>): JSX.Element => {
-  const { root, table, emptyTableBox } = useStyles();
+  const classes = useStyles();
 
   return (
-    <Paper className={root}>
-      <Table className={table} size='small'>
+    <Paper className={classes.box}>
+      <Table className={classes.table} size='small'>
         <TableHeader columns={columns} hasActionButtonColumn={!!actionButton} />
         {!!data.length && (
           <TableRows
@@ -41,7 +41,7 @@ export const SimpleTable = <T, K extends keyof T>({
         )}
       </Table>
       {!data.length && (
-        <Box className={emptyTableBox} marginTop={2}>
+        <Box className={classes.emptyTableBox} marginTop={2}>
           <Typography>Sem resultados...</Typography>
         </Box>
       )}

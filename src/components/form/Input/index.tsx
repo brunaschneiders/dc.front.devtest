@@ -15,11 +15,11 @@ export const Input = ({
   icon,
   ...props
 }: InputProps): JSX.Element => {
-  const { inputBox, iconBox } = useStyles();
+  const classes = useStyles();
 
   return (
-    <Box className={inputBox}>
-      {!!icon && <Box className={iconBox}>{icon}</Box>}
+    <Box className={classes.inputBox}>
+      {!!icon && <Box className={classes.iconBox}>{icon}</Box>}
       <InputBase name={name} aria-label={ariaLabel} {...props} />
     </Box>
   );

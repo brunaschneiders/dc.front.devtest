@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { SimpleTable, ColumnDefinitionType } from '.';
+import { SimpleTable, ColumnProps } from '.';
 
 describe('Simple Table component', () => {
   it('renders in table rows based on provided columns', () => {
@@ -28,7 +28,7 @@ describe('Simple Table component', () => {
       }
     ];
 
-    const tableColumns: ColumnDefinitionType<DataProps, keyof DataProps>[] = [
+    const tableColumns: ColumnProps<DataProps, keyof DataProps>[] = [
       {
         key: 'column1',
         header: 'Coluna 1'

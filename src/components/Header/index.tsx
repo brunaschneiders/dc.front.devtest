@@ -10,10 +10,10 @@ interface HeaderProps {
 }
 
 export const Header = ({ title, rightContent }: HeaderProps): JSX.Element => {
-  const { header } = useStyles();
+  const classes = useStyles();
 
   return (
-    <header data-testid='header-element' className={header}>
+    <header data-testid='header-element' className={classes.header}>
       <Title text={title} />
       {!!rightContent && rightContent}
     </header>

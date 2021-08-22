@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { SimpleTable, ColumnDefinitionType } from '../../components';
+import { SimpleTable, ColumnProps } from '../../components';
 
 type DataProps = {
   column1: string;
@@ -27,7 +27,7 @@ const tableData: DataProps[] = [
   }
 ];
 
-const tableColumns: ColumnDefinitionType<DataProps, keyof DataProps>[] = [
+const tableColumns: ColumnProps<DataProps, keyof DataProps>[] = [
   {
     key: 'column1',
     header: 'Coluna 1'
@@ -47,7 +47,7 @@ export default {
   component: SimpleTable,
   args: {
     data: tableData,
-    columns: tableColumns as ColumnDefinitionType<unknown, never>[]
+    columns: tableColumns as ColumnProps<unknown, never>[]
   }
 } as ComponentMeta<typeof SimpleTable>;
 

@@ -23,7 +23,7 @@ export const VerticalTable = ({ data }: VerticalTableProps): JSX.Element => {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root}>
+    <Paper className={classes.box}>
       <Table className={classes.table}>
         <TableBody>
           {data.map((row) => (
