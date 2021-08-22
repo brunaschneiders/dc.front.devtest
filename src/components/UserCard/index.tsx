@@ -14,6 +14,7 @@ interface UserCardProps {
 export const UserCard = ({
   name,
   company,
+  onShowAlbunsButtonClicked,
   ...props
 }: UserCardProps): JSX.Element => {
   const classes = useStyles();
@@ -25,7 +26,12 @@ export const UserCard = ({
         <Typography variant='subtitle1'>{name}</Typography>
         <Typography>{company}</Typography>
       </Box>
-      <Button name='showAlbums' type='button' text='Ver Álbuns' />
+      <Button
+        name='showAlbums'
+        type='button'
+        text='Ver Álbuns'
+        onClick={onShowAlbunsButtonClicked}
+      />
     </Box>
   );
 };
