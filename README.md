@@ -4,7 +4,7 @@
 
 ## <a id="sobre"></a> ℹ Sobre
 
-🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos.
+🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos. É possível consultar o resultado [aqui](https://dc-front-devtest.herokuapp.com/).
 
 ## <a id="conteudo"></a> Tabela de conteúdos
 
