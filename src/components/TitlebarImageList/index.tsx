@@ -32,6 +32,7 @@ export const TitlebarImageList = ({
       cols={cols}
       gap={0}
       style={{ margin: -(gap || 0) * 8 }}
+      data-testid='image-list-element'
     >
       {imageList.map((item) =>
         item.href ? (

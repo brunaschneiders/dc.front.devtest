@@ -13,7 +13,7 @@ export const Header = ({ title, rightContent }: HeaderProps): JSX.Element => {
   const { header } = useStyles();
 
   return (
-    <header className={header}>
+    <header data-testid='header-element' className={header}>
       <Title text={title} />
       {!!rightContent && rightContent}
     </header>
