@@ -45,7 +45,7 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 ### Tela de lista de usuários
 
 - Versão Web <br/><br/>
-  <img src="appDemonstrationImages/usersListWeb.png" width="500">
+  <img src="appDemonstrationImages/usersTableWeb.png" width="500">
   <br/>
 - Versão Mobile <br/><br/>
   <img src="appDemonstrationImages/usersListMobile.png" height="300">
