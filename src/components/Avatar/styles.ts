@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
     height: theme.spacing(10)
   },
   xlarge: {
-    width: theme.spacing(15),
-    height: theme.spacing(15)
+    width: theme.spacing(20),
+    height: theme.spacing(20)
   }
 }));
