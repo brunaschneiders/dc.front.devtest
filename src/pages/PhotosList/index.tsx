@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Header, Button } from '../../components';
 import { TitlebarPhotosList } from './TitlebarPhotosList';
-
-import jsonPlaceholderService from '../../services/jsonPlaceholderService';
 
 export type PhotoProps = {
   id: number;
@@ -14,28 +12,7 @@ export type PhotoProps = {
 };
 
 export const PhotosList = (): JSX.Element => {
-  const { albumId } = useParams<{ albumId: string }>();
   const { goBack } = useHistory();
-
-  const [photos, setPhotos] = useState([] as PhotoProps[]);
-
-  useEffect(() => {
-    const getPhotos = async (): Promise<void> => {
-      if (!Number(albumId)) return;
-
-      try {
-        const response = await jsonPlaceholderService.getPhotosByAlbumId(
-          Number(albumId)
-        );
-
-        setPhotos(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getPhotos();
-  }, [albumId]);
 
   return (
     <>
@@ -46,7 +23,7 @@ export const PhotosList = (): JSX.Element => {
         }
       />
 
-      <TitlebarPhotosList photos={photos} />
+      <TitlebarPhotosList />
     </>
   );
 };

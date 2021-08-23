@@ -1,22 +1,22 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Box } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
 
 import { PhotoProps } from '../..';
 import { TitlebarImageList, Pagination } from '../../../components';
 
+import { usePhotos } from '../../../hooks';
+
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
 
-interface TitlebarPhotosListProps {
-  photos: PhotoProps[];
-}
-
-export const TitlebarPhotosList = ({
-  photos
-}: TitlebarPhotosListProps): JSX.Element => {
+export const TitlebarPhotosList = (): JSX.Element => {
   const classes = useStyles();
-  const [currentPhotos, setCurrentPhotos] = useState(photos);
+  const { albumId } = useParams<{ albumId: string }>();
+  const { activeUserAlbumPhotos, requestActiveUserAlbumPhotos } = usePhotos();
+
+  const [currentPhotos, setCurrentPhotos] = useState(activeUserAlbumPhotos);
   const screenSize = {
     mobile: useMediaQuery(theme.breakpoints.down(400)),
     xs: useMediaQuery(theme.breakpoints.down('xs')),
@@ -49,6 +49,14 @@ export const TitlebarPhotosList = ({
     setCurrentPhotos(itemsOfCurrentPage);
   }, []);
 
+  useEffect(() => {
+    requestActiveUserAlbumPhotos(Number(albumId));
+  }, [albumId, requestActiveUserAlbumPhotos]);
+
+  useEffect(() => {
+    setCurrentPhotos(activeUserAlbumPhotos);
+  }, [activeUserAlbumPhotos]);
+
   return (
     <Box className={classes.box} component='main'>
       <TitlebarImageList
@@ -59,7 +67,7 @@ export const TitlebarPhotosList = ({
 
       <Box className={classes.paginationBox}>
         <Pagination
-          items={photos}
+          items={activeUserAlbumPhotos}
           onHandlePageChanged={handleChangePage}
           itemsPerPage={12}
         />

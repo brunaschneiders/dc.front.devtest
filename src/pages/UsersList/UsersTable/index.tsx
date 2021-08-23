@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
 import { SimpleTable, ColumnProps } from '../../../components';
 
-import { theme } from '../../../styles/theme';
+import { useUsers } from '../../../hooks';
+
 import { useStyles } from './styles';
 
 export type UserTableProps = {
@@ -17,13 +18,10 @@ export type UserTableProps = {
   albumsQty: number;
 };
 
-interface UsersTableProps {
-  users: UserTableProps[];
-}
-
-export const UsersTable = ({ users }: UsersTableProps): JSX.Element => {
-  const { push } = useHistory();
+export const UsersTable = (): JSX.Element => {
   const classes = useStyles();
+  const { push } = useHistory();
+  const { filteredUsers, requestUsersList } = useUsers();
 
   const tableColumns: ColumnProps<UserTableProps, keyof UserTableProps>[] = [
     {
@@ -48,10 +46,14 @@ export const UsersTable = ({ users }: UsersTableProps): JSX.Element => {
     }
   ];
 
+  useEffect(() => {
+    requestUsersList();
+  }, [requestUsersList]);
+
   return (
     <Box className={classes.tableBox} component='main'>
       <SimpleTable
-        data={users}
+        data={filteredUsers}
         columns={tableColumns}
         actionButton={{
           text: 'Detalhes',

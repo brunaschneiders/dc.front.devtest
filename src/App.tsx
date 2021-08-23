@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 
 import { Routes } from './routes';
+import { AppProvider } from './contexts/AppContext';
 
 import { useStyles } from './styles/main';
 import './styles/mainStyles.css';
@@ -10,7 +11,9 @@ const App = (): JSX.Element => {
   const classes = useStyles();
   return (
     <Container className={classes.container}>
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
     </Container>
   );
 };

@@ -1,26 +1,20 @@
-import React from 'react';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Box } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { Box, useMediaQuery } from '@material-ui/core';
+import { useParams, useLocation } from 'react-router-dom';
 
-import { AlbumProps } from '../..';
 import { TitlebarImageList } from '../../../components';
+
+import { useAlbums } from '../../../hooks';
 
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
 
-export type AlbumListProps = {
-  url: string;
-  href: string;
-} & AlbumProps;
-
-interface TitlebarAlbumsListProps {
-  albums: AlbumListProps[];
-}
-
-export const TitlebarAlbumsList = ({
-  albums
-}: TitlebarAlbumsListProps): JSX.Element => {
+export const TitlebarAlbumsList = (): JSX.Element => {
   const classes = useStyles();
+  const { userId } = useParams<{ userId: string }>();
+  const { pathname } = useLocation();
+  const { parsedActiveUserAlbums, requestActiveUserAlbums } = useAlbums();
+
   const screenSize = {
     mobile: useMediaQuery(theme.breakpoints.down(400)),
     xs: useMediaQuery(theme.breakpoints.down('xs')),
@@ -49,10 +43,14 @@ export const TitlebarAlbumsList = ({
     return { gap: 3, cols: 4 };
   };
 
+  useEffect(() => {
+    requestActiveUserAlbums(Number(userId), pathname);
+  }, [userId, pathname, requestActiveUserAlbums]);
+
   return (
     <Box className={classes.box} component='main'>
       <TitlebarImageList
-        imageList={albums}
+        imageList={parsedActiveUserAlbums}
         gap={getResponsiveData().gap}
         cols={getResponsiveData().cols}
       />

@@ -1,55 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
 import { UserCard, Header, Button } from '../../components';
 import { UserVerticalTable } from './UserVerticalTable';
 
-import jsonPlaceholderService from '../../services/jsonPlaceholderService';
+import { useUsers } from '../../hooks';
 
-import { theme } from '../../styles/theme';
 import { useStyles } from './styles';
-
-export type AddressProps = {
-  street: string;
-  suite: string;
-  city: string;
-};
-
-export type UserProps = {
-  id: number;
-  email: string;
-  name: string;
-  phone: string;
-  username: string;
-  website: string;
-  company: { name: string };
-  address: AddressProps;
-};
 
 export const UserDetails = (): JSX.Element => {
   const classes = useStyles();
   const { userId } = useParams<{ userId: string }>();
-  const { push, location, goBack } = useHistory();
-
-  const [user, setUser] = useState({} as UserProps);
+  const { push, goBack } = useHistory();
+  const { pathname } = useLocation();
+  const { activeUser, requestUserDetails } = useUsers();
 
   useEffect(() => {
-    const getUser = async (): Promise<void> => {
-      if (!Number(userId)) return;
-
-      try {
-        const response = await jsonPlaceholderService.getUserById(
-          Number(userId)
-        );
-        setUser(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getUser();
-  }, [userId]);
+    requestUserDetails(Number(userId));
+  }, [userId, requestUserDetails]);
 
   return (
     <>
@@ -63,16 +32,14 @@ export const UserDetails = (): JSX.Element => {
       <Box className={classes.box} component='main'>
         <Box className={classes.userCardBox}>
           <UserCard
-            name={user.name}
-            company={user.company?.name}
-            onShowAlbunsButtonClicked={() =>
-              push(`${location.pathname}/albums`)
-            }
+            name={activeUser.name}
+            company={activeUser.company?.name}
+            onShowAlbunsButtonClicked={() => push(`${pathname}/albums`)}
           />
         </Box>
 
         <Box className={classes.tableBox}>
-          <UserVerticalTable data={user} />
+          <UserVerticalTable />
         </Box>
       </Box>
     </>

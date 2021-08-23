@@ -1,18 +1,16 @@
 import React from 'react';
 
 import { VerticalTable } from '../../../components';
-import { UserProps } from '..';
+
+import { useUsers } from '../../../hooks';
 
 import { getFormattedAddress } from '../../../utils/formatter';
 
-interface UserVerticalTableProps {
-  data: UserProps;
-}
+export const UserVerticalTable = (): JSX.Element => {
+  const { activeUser } = useUsers();
 
-export const UserVerticalTable = ({
-  data
-}: UserVerticalTableProps): JSX.Element => {
-  const { name, username, email, phone, website, address, company } = data;
+  const { name, username, email, phone, website, address, company } =
+    activeUser;
   const tableData = [
     { header: 'Nome Completo', value: name },
     { header: 'Username', value: username },
