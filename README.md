@@ -27,6 +27,7 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 - [Material-UI](https://material-ui.com/pt/)
 - [JEST](https://jestjs.io/pt-BR/)
 - [Testing Library](https://testing-library.com/)
+- [Context API](https://pt-br.reactjs.org/docs/context.html)
 
 ## <a id="tarefas"></a> 🔝 Tarefas
 
