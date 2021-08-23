@@ -6,6 +6,9 @@ export const theme = createTheme({
       light: '#F9D7C9',
       main: '#FE5200',
       dark: '#E6530F'
+    },
+    secondary: {
+      main: '#F9D7C9'
     }
   },
   props: {
