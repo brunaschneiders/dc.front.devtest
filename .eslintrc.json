@@ -57,7 +57,9 @@
         "devDependencies": [
           ".storybook/**",
           "**/*.stories.tsx",
-          "**/*.test.tsx"
+          "**/*.test.tsx", 
+          "**/*.test.ts",
+          "src/tests/*.ts"
         ]
       }
     ]
