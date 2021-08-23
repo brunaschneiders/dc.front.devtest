@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
-import { SimpleTable, ColumnProps } from '../../../components';
+import { SimpleTable, ColumnProps, Spinner } from '../../../components';
 
-import { useUsers } from '../../../hooks';
+import { useUsers, useLoading } from '../../../hooks';
 
 import { useStyles } from './styles';
 
@@ -22,6 +22,7 @@ export const UsersTable = (): JSX.Element => {
   const classes = useStyles();
   const { push } = useHistory();
   const { filteredUsers, requestUsersList } = useUsers();
+  const { isLoading } = useLoading();
 
   const tableColumns: ColumnProps<UserTableProps, keyof UserTableProps>[] = [
     {
@@ -47,19 +48,32 @@ export const UsersTable = (): JSX.Element => {
   ];
 
   useEffect(() => {
-    requestUsersList();
+    const getUsersList = async () => {
+      try {
+        await requestUsersList();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUsersList();
   }, [requestUsersList]);
 
   return (
-    <Box className={classes.tableBox} component='main'>
-      <SimpleTable
-        data={filteredUsers}
-        columns={tableColumns}
-        actionButton={{
-          text: 'Detalhes',
-          onActionButtonClicked: (rowData) => push(`usuarios/${rowData.id}`)
-        }}
-      />
-    </Box>
+    <>
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <Box className={classes.tableBox} component='main'>
+          <SimpleTable
+            data={filteredUsers}
+            columns={tableColumns}
+            actionButton={{
+              text: 'Detalhes',
+              onActionButtonClicked: (rowData) => push(`usuarios/${rowData.id}`)
+            }}
+          />
+        </Box>
+      )}
+    </>
   );
 };

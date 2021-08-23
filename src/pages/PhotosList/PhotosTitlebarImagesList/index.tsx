@@ -4,9 +4,9 @@ import { Box } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 
 import { PhotoProps } from '../..';
-import { TitlebarImageList, Pagination } from '../../../components';
+import { TitlebarImageList, Pagination, Spinner } from '../../../components';
 
-import { usePhotos } from '../../../hooks';
+import { usePhotos, useLoading } from '../../../hooks';
 
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
@@ -15,6 +15,7 @@ export const PhotosTitlebarImagesList = (): JSX.Element => {
   const classes = useStyles();
   const { albumId } = useParams<{ albumId: string }>();
   const { activeUserAlbumPhotos, requestActiveUserAlbumPhotos } = usePhotos();
+  const { isLoading } = useLoading();
 
   const [currentPhotos, setCurrentPhotos] = useState(activeUserAlbumPhotos);
   const screenSize = {
@@ -58,20 +59,25 @@ export const PhotosTitlebarImagesList = (): JSX.Element => {
   }, [activeUserAlbumPhotos]);
 
   return (
-    <Box className={classes.box} component='main'>
-      <TitlebarImageList
-        imageList={currentPhotos}
-        gap={getResponsiveData().gap}
-        cols={getResponsiveData().cols}
-      />
+    <>
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <Box className={classes.box} component='main'>
+          <TitlebarImageList
+            imageList={currentPhotos}
+            gap={getResponsiveData().gap}
+            cols={getResponsiveData().cols}
+          />
 
-      <Box className={classes.paginationBox}>
-        <Pagination
-          items={activeUserAlbumPhotos}
-          onHandlePageChanged={handleChangePage}
-          itemsPerPage={12}
-        />
-      </Box>
-    </Box>
+          <Box className={classes.paginationBox}>
+            <Pagination
+              items={activeUserAlbumPhotos}
+              onHandlePageChanged={handleChangePage}
+              itemsPerPage={12}
+            />
+          </Box>
+        </Box>
+      )}
+    </>
   );
 };

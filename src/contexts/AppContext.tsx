@@ -4,6 +4,8 @@ import { createContext } from 'use-context-selector';
 
 import jsonPlaceholderService from '../services/jsonPlaceholder/service';
 
+import { delay } from '../utils/delay';
+
 type AddressProps = {
   street: string;
   suite: string;
@@ -39,15 +41,16 @@ type PhotoProps = {
 };
 
 interface AppContextProps {
+  isLoading: boolean;
   filteredUsers: ParsedUserProps[];
   activeUser: UserProps;
   parsedActiveUserAlbums: ParsedAlbumProps[];
   activeUserAlbumPhotos: PhotoProps[];
-  requestUsersList: () => void;
+  requestUsersList: () => Promise<void>;
   onChangeQueryUser: (newQueryUser: string) => void;
-  requestUserDetails: (userId: number) => void;
-  requestActiveUserAlbums: (userId: number, pathname: string) => void;
-  requestActiveUserAlbumPhotos: (albumId: number) => void;
+  requestUserDetails: (userId: number) => Promise<void>;
+  requestActiveUserAlbums: (userId: number, pathname: string) => Promise<void>;
+  requestActiveUserAlbumPhotos: (albumId: number) => Promise<void>;
 }
 
 interface AppProviderProps {
@@ -57,6 +60,7 @@ interface AppProviderProps {
 export const AppContext = createContext({} as AppContextProps);
 
 export const AppProvider = ({ children }: AppProviderProps) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [parsedUsers, setParsedUsers] = useState<ParsedUserProps[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<ParsedUserProps[]>([]);
   const [activeUser, setActiveUser] = useState<UserProps>({} as UserProps);
@@ -89,14 +93,19 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   );
 
   const requestUsersList = useCallback(async () => {
+    setIsLoading(true);
+
     const newUsers = await jsonPlaceholderService.getUsers();
     const newAlbums = await jsonPlaceholderService.getAlbums();
 
     handleParseUsers(newUsers, newAlbums);
     setAlbums(newAlbums);
+
+    await delay(200);
+    setIsLoading(false);
   }, [handleParseUsers]);
 
-  const onChangeQueryUser = useCallback(async (newQueryUser: string) => {
+  const onChangeQueryUser = useCallback((newQueryUser: string) => {
     setQueryUser(newQueryUser);
   }, []);
 
@@ -117,14 +126,19 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
   const requestUserDetails = useCallback(
     async (userId: number) => {
+      setIsLoading(true);
       if (parsedUsers.length) {
         const newActiveUser =
           parsedUsers.find((user) => user.id === userId) ?? ({} as UserProps);
         setActiveUser(newActiveUser);
       } else {
         const newActiveUser = await jsonPlaceholderService.getUserById(userId);
+
         setActiveUser(newActiveUser);
       }
+
+      await delay(200);
+      setIsLoading(false);
     },
     [parsedUsers]
   );
@@ -157,6 +171,8 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
   const requestActiveUserAlbums = useCallback(
     async (userId: number, pathname: string) => {
+      setIsLoading(true);
+
       let newActiveUserAlbums: AlbumProps[] = [];
       if (albums.length) {
         newActiveUserAlbums = albums.filter((album) => album.userId === userId);
@@ -169,12 +185,17 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
       handleParseActiveUserAlbums(newActiveUserAlbums, newPhotos, pathname);
       setPhotos(newPhotos);
+
+      await delay(200);
+      setIsLoading(false);
     },
     [albums, handleParseActiveUserAlbums]
   );
 
   const requestActiveUserAlbumPhotos = useCallback(
     async (albumId: number) => {
+      setIsLoading(true);
+
       if (photos.length) {
         const newActiveUserAlbumPhotos = photos.filter(
           (photo) => photo.albumId === albumId
@@ -185,6 +206,9 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           await jsonPlaceholderService.getPhotosByAlbumId(albumId);
         setActiveUserAlbumPhotos(newActiveUserAlbumPhotos);
       }
+
+      await delay(200);
+      setIsLoading(false);
     },
     [photos]
   );
@@ -192,6 +216,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <AppContext.Provider
       value={{
+        isLoading,
         filteredUsers,
         activeUser,
         parsedActiveUserAlbums,

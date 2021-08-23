@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Container,
+  Box,
   CircularProgress,
   CircularProgressProps
 } from '@material-ui/core';
@@ -12,7 +13,9 @@ export const Spinner = ({ ...props }: CircularProgressProps): JSX.Element => {
 
   return (
     <Container data-testid='spinner-element' className={classes.container}>
-      <CircularProgress color='secondary' {...props} />
+      <Box className={classes.box}>
+        <CircularProgress color='secondary' {...props} />
+      </Box>
     </Container>
   );
 };

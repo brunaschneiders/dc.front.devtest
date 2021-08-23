@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Box, useMediaQuery } from '@material-ui/core';
 import { useParams, useLocation } from 'react-router-dom';
 
-import { TitlebarImageList } from '../../../components';
+import { TitlebarImageList, Spinner } from '../../../components';
 
-import { useAlbums } from '../../../hooks';
+import { useAlbums, useLoading } from '../../../hooks';
 
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
@@ -14,6 +14,7 @@ export const AlbumsTitlebarImagesList = (): JSX.Element => {
   const { userId } = useParams<{ userId: string }>();
   const { pathname } = useLocation();
   const { parsedActiveUserAlbums, requestActiveUserAlbums } = useAlbums();
+  const { isLoading } = useLoading();
 
   const screenSize = {
     mobile: useMediaQuery(theme.breakpoints.down(400)),
@@ -48,12 +49,17 @@ export const AlbumsTitlebarImagesList = (): JSX.Element => {
   }, [userId, pathname, requestActiveUserAlbums]);
 
   return (
-    <Box className={classes.box} component='main'>
-      <TitlebarImageList
-        imageList={parsedActiveUserAlbums}
-        gap={getResponsiveData().gap}
-        cols={getResponsiveData().cols}
-      />
-    </Box>
+    <>
+      {isLoading && <Spinner />}
+      {!isLoading && (
+        <Box className={classes.box} component='main'>
+          <TitlebarImageList
+            imageList={parsedActiveUserAlbums}
+            gap={getResponsiveData().gap}
+            cols={getResponsiveData().cols}
+          />
+        </Box>
+      )}
+    </>
   );
 };
