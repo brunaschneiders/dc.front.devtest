@@ -27,6 +27,7 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 - [Material-UI](https://material-ui.com/pt/)
 - [JEST](https://jestjs.io/pt-BR/)
 - [Testing Library](https://testing-library.com/)
+- [Context API](https://pt-br.reactjs.org/docs/context.html)
 
 ## <a id="tarefas"></a> 🔝 Tarefas
 
@@ -39,7 +40,7 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 - [x] Testes Unitários - componentes
 - [ ] Testes Unitários - páginas
 - [ ] Testes de Integração
-- [ ] Gerenciamento de estado por contexto
+- [x] Gerenciamento de estado por contexto
 - [ ] Teste end-to-end
 - [ ] Cache na aplicação
 
