@@ -52,17 +52,7 @@ export const PhotosTitlebarImagesList = (): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    const getActiveUserAlbumPhotos = async () => {
-      try {
-        await requestActiveUserAlbumPhotos(Number(albumId));
-      } catch (error) {
-        toast.error(
-          'Ops... Algo deu errado ao buscar os dados, tente novamente!'
-        );
-      }
-    };
-
-    getActiveUserAlbumPhotos();
+    requestActiveUserAlbumPhotos(Number(albumId));
   }, [albumId, requestActiveUserAlbumPhotos]);
 
   useEffect(() => {
@@ -72,7 +62,7 @@ export const PhotosTitlebarImagesList = (): JSX.Element => {
   return (
     <>
       {isLoading && <Spinner />}
-      {!isLoading && (
+      {!isLoading && !!activeUserAlbumPhotos.length && (
         <Box className={classes.box} component='main'>
           <TitlebarImageList
             imageList={currentPhotos}

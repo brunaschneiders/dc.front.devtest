@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useCallback, useState } from 'react';
 import { createContext } from 'use-context-selector';
+import { toast } from 'react-toastify';
 
 import jsonPlaceholderService from '../services/jsonPlaceholder/service';
 
@@ -74,9 +75,12 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     PhotoProps[]
   >([]);
 
+  const requestErrorMessage =
+    'Ops... Algo deu errado ao buscar os dados, tente novamente!';
+
   const handleParseUsers = useCallback(
     (newUsers: UserProps[], newAlbums: AlbumProps[]) => {
-      if (newUsers.length === 0 || newAlbums.length === 0) return;
+      if (newUsers.length === 0) return;
 
       const newParsedUsers: ParsedUserProps[] = [];
       newUsers.forEach((user) => {
@@ -95,11 +99,17 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const requestUsersList = useCallback(async () => {
     setIsLoading(true);
 
-    const newUsers = await jsonPlaceholderService.getUsers();
-    const newAlbums = await jsonPlaceholderService.getAlbums();
+    try {
+      const newUsers = await jsonPlaceholderService.getUsers();
+      const newAlbums = await jsonPlaceholderService.getAlbums();
 
-    handleParseUsers(newUsers, newAlbums);
-    setAlbums(newAlbums);
+      if (!newUsers.length) throw new Error();
+
+      handleParseUsers(newUsers, newAlbums);
+      setAlbums(newAlbums);
+    } catch (error) {
+      toast.error(requestErrorMessage);
+    }
 
     await delay(200);
     setIsLoading(false);
@@ -127,14 +137,22 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   const requestUserDetails = useCallback(
     async (userId: number) => {
       setIsLoading(true);
-      if (parsedUsers.length) {
-        const newActiveUser =
-          parsedUsers.find((user) => user.id === userId) ?? ({} as UserProps);
-        setActiveUser(newActiveUser);
-      } else {
-        const newActiveUser = await jsonPlaceholderService.getUserById(userId);
+
+      try {
+        let newActiveUser;
+
+        if (parsedUsers.length) {
+          newActiveUser =
+            parsedUsers.find((user) => user.id === userId) ?? ({} as UserProps);
+        } else {
+          newActiveUser = await jsonPlaceholderService.getUserById(userId);
+        }
+
+        if (!newActiveUser) throw new Error();
 
         setActiveUser(newActiveUser);
+      } catch (error) {
+        toast.error(requestErrorMessage);
       }
 
       await delay(200);
@@ -173,18 +191,28 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     async (userId: number, pathname: string) => {
       setIsLoading(true);
 
-      let newActiveUserAlbums: AlbumProps[] = [];
-      if (albums.length) {
-        newActiveUserAlbums = albums.filter((album) => album.userId === userId);
-      } else {
-        newActiveUserAlbums = await jsonPlaceholderService.getAlbumsByUserId(
-          userId
-        );
-      }
-      const newPhotos = (await jsonPlaceholderService.getPhotos()) ?? [];
+      try {
+        let newActiveUserAlbums: AlbumProps[] = [];
 
-      handleParseActiveUserAlbums(newActiveUserAlbums, newPhotos, pathname);
-      setPhotos(newPhotos);
+        if (albums.length) {
+          newActiveUserAlbums = albums.filter(
+            (album) => album.userId === userId
+          );
+        } else {
+          newActiveUserAlbums = await jsonPlaceholderService.getAlbumsByUserId(
+            userId
+          );
+        }
+
+        if (!newActiveUserAlbums.length) throw new Error();
+
+        const newPhotos = await jsonPlaceholderService.getPhotos();
+
+        handleParseActiveUserAlbums(newActiveUserAlbums, newPhotos, pathname);
+        setPhotos(newPhotos);
+      } catch (error) {
+        toast.error(requestErrorMessage);
+      }
 
       await delay(200);
       setIsLoading(false);
@@ -196,15 +224,23 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     async (albumId: number) => {
       setIsLoading(true);
 
-      if (photos.length) {
-        const newActiveUserAlbumPhotos = photos.filter(
-          (photo) => photo.albumId === albumId
-        );
+      try {
+        let newActiveUserAlbumPhotos;
+
+        if (photos.length) {
+          newActiveUserAlbumPhotos = photos.filter(
+            (photo) => photo.albumId === albumId
+          );
+        } else {
+          newActiveUserAlbumPhotos =
+            await jsonPlaceholderService.getPhotosByAlbumId(albumId);
+        }
+
+        if (!newActiveUserAlbumPhotos.length) throw new Error();
+
         setActiveUserAlbumPhotos(newActiveUserAlbumPhotos);
-      } else {
-        const newActiveUserAlbumPhotos =
-          await jsonPlaceholderService.getPhotosByAlbumId(albumId);
-        setActiveUserAlbumPhotos(newActiveUserAlbumPhotos);
+      } catch (error) {
+        toast.error(requestErrorMessage);
       }
 
       await delay(200);

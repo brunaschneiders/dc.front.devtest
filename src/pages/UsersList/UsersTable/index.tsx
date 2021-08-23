@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Box } from '@material-ui/core';
-import { toast } from 'react-toastify';
 
 import { SimpleTable, ColumnProps, Spinner } from '../../../components';
 
@@ -49,17 +48,7 @@ export const UsersTable = (): JSX.Element => {
   ];
 
   useEffect(() => {
-    const getUsersList = async () => {
-      try {
-        await requestUsersList();
-      } catch (error) {
-        toast.error(
-          'Ops... Algo deu errado ao buscar os dados, tente novamente!'
-        );
-      }
-    };
-
-    getUsersList();
+    requestUsersList();
   }, [requestUsersList]);
 
   return (

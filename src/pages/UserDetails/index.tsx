@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { Box } from '@material-ui/core';
-import { toast } from 'react-toastify';
 
 import { UserCard, Header, Button, Spinner } from '../../components';
 import { UserVerticalTable } from './UserVerticalTable';
@@ -19,17 +18,7 @@ export const UserDetails = (): JSX.Element => {
   const { isLoading } = useLoading();
 
   useEffect(() => {
-    const getUsersDetails = async () => {
-      try {
-        await requestUserDetails(Number(userId));
-      } catch (error) {
-        toast.error(
-          'Ops... Algo deu errado ao buscar os dados, tente novamente!'
-        );
-      }
-    };
-
-    getUsersDetails();
+    requestUserDetails(Number(userId));
   }, [userId, requestUserDetails]);
 
   return (

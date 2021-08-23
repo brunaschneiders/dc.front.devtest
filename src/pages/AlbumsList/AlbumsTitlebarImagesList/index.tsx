@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Box, useMediaQuery } from '@material-ui/core';
 import { useParams, useLocation } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { TitlebarImageList, Spinner } from '../../../components';
 
@@ -46,17 +45,7 @@ export const AlbumsTitlebarImagesList = (): JSX.Element => {
   };
 
   useEffect(() => {
-    const getActiveUserAlbums = async () => {
-      try {
-        await requestActiveUserAlbums(Number(userId), pathname);
-      } catch (error) {
-        toast.error(
-          'Ops... Algo deu errado ao buscar os dados, tente novamente!'
-        );
-      }
-    };
-
-    getActiveUserAlbums();
+    requestActiveUserAlbums(Number(userId), pathname);
   }, [userId, pathname, requestActiveUserAlbums]);
 
   return (
