@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Box } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { PhotoProps } from '../..';
 import { TitlebarImageList, Pagination, Spinner } from '../../../components';

@@ -4,8 +4,6 @@ import { Search as SearchIcon } from '@material-ui/icons';
 
 import { Header, Input } from '../components';
 
-import { theme } from '../styles/theme';
-
 export default {
   title: 'Header',
   component: Header,
