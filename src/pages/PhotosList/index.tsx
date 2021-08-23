@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Header, Button } from '../../components';
-import { TitlebarPhotosList } from './TitlebarPhotosList';
+import { PhotosTitlebarImagesList } from './PhotosTitlebarImagesList';
 
 export type PhotoProps = {
   id: number;
@@ -23,7 +23,7 @@ export const PhotosList = (): JSX.Element => {
         }
       />
 
-      <TitlebarPhotosList />
+      <PhotosTitlebarImagesList />
     </>
   );
 };

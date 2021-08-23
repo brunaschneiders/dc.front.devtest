@@ -5,7 +5,7 @@ import { Routes } from './routes';
 import { AppProvider } from './contexts/AppContext';
 
 import { useStyles } from './styles/main';
-import './styles/mainStyles.css';
+import './styles/styles.css';
 
 const App = (): JSX.Element => {
   const classes = useStyles();

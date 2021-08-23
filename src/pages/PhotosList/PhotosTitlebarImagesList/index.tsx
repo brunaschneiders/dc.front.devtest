@@ -11,7 +11,7 @@ import { usePhotos } from '../../../hooks';
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
 
-export const TitlebarPhotosList = (): JSX.Element => {
+export const PhotosTitlebarImagesList = (): JSX.Element => {
   const classes = useStyles();
   const { albumId } = useParams<{ albumId: string }>();
   const { activeUserAlbumPhotos, requestActiveUserAlbumPhotos } = usePhotos();

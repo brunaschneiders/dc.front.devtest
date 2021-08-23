@@ -9,7 +9,7 @@ import { useAlbums } from '../../../hooks';
 import { theme } from '../../../styles/theme';
 import { useStyles } from './styles';
 
-export const TitlebarAlbumsList = (): JSX.Element => {
+export const AlbumsTitlebarImagesList = (): JSX.Element => {
   const classes = useStyles();
   const { userId } = useParams<{ userId: string }>();
   const { pathname } = useLocation();
