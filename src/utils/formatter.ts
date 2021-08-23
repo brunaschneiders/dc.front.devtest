@@ -3,7 +3,8 @@ export const getFormattedAddress = (
   suite: string,
   city: string
 ) => {
-  const address = `${street}, ${suite}, ${city}`;
-
-  return address;
+  if (street && suite && city) {
+    return `${street}, ${suite}, ${city}`;
+  }
+  return '';
 };
