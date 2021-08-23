@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect } from 'react';
 import { useCallback, useState } from 'react';
 import { createContext } from 'use-context-selector';
 
-import jsonPlaceholderService from '../services/jsonPlaceholderService';
+import jsonPlaceholderService from '../services/jsonPlaceholder/service';
 
 type AddressProps = {
   street: string;

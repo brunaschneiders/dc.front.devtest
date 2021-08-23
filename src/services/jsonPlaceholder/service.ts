@@ -1,4 +1,4 @@
-import api from './jsonPlaceholderApi';
+import api from './api';
 
 const endpoints = {
   users: '/users',
