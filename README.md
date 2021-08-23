@@ -31,10 +31,10 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 
 ## <a id="tarefas"></a> 🔝 Tarefas
 
-- [x] Corrigir funcionamento do app.
-- [x] Melhorar a estrutura do código.
-- [x] Melhorar estrutura de comunicação com API.
-- [x] Mover telas do projeto para suas respectivas rotas.
+- [x] Corrigir funcionamento do app
+- [x] Melhorar a estrutura do código
+- [x] Melhorar estrutura de comunicação com API
+- [x] Mover telas do projeto para suas respectivas rotas
 - [x] Redesign da aplicação
 - [x] Melhorar acessibilidade
 - [x] Testes Unitários - componentes
@@ -82,7 +82,7 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 
 ### Storybook
 
-A documentação dos componentes do projeto é feita através do storybook. Para rodar localmente e poder visualizá-la, basta seguir os seguintes passos definidos para [executar o projeto](#executar)
+A documentação dos componentes do projeto é feita através do storybook. Para rodar localmente e poder visualizá-la, basta seguir os seguintes passos definidos para [executar o projeto](#executar).
 
 ### Chromatic
 
