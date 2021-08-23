@@ -39,7 +39,7 @@ As seguintes tecnologias foram utilizadas na construção deste projeto:
 - [x] Testes Unitários - componentes
 - [ ] Testes Unitários - páginas
 - [ ] Testes de Integração
-- [ ] Gerenciamento de estado por contexto
+- [x] Gerenciamento de estado por contexto
 - [ ] Teste end-to-end
 - [ ] Cache na aplicação
 
