@@ -10,9 +10,20 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'default',
+    values: [
+      {
+        name: 'default',
+        value: theme.palette.grey[100],
+      },
+      {
+        name: 'primary',
+        value: theme.palette.primary.main,
+      },
+    ],
+  },
 }
-
-
 export const decorators = [
   Story => (
     <ThemeProvider theme={theme}>

@@ -28,17 +28,6 @@ export default {
   },
   args: {
     title: 'Title'
-  },
-  parameters: {
-    backgrounds: {
-      default: 'primary',
-      values: [
-        {
-          name: 'primary',
-          value: theme.palette.primary.main
-        }
-      ]
-    }
   }
 } as ComponentMeta<typeof Header>;
 
