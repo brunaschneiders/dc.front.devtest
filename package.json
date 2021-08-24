@@ -28,21 +28,6 @@
     "build-storybook": "build-storybook -s public",
     "chromatic": "npx chromatic --project-token=81b8a6032256"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
