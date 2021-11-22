@@ -1,157 +1,135 @@
-# Processo Seletivo Front end - Delivery Center
+<h1 align="center">Processo Seletivo Front end - Delivery Center</h1>
 
-O objetivo deste teste é avaliar a organização do seu código, sua criatividade e lógica, e ver como você estrutura uma solução de forma simples e eficiente baseada em requisitos simples.
+<p align="center"><b>Status: Em construção 🚧</b></p>
 
----
+## <a id="sobre"></a> ℹ Sobre
 
-## O desafio
-O desafio consiste na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos.  
-![image](https://user-images.githubusercontent.com/7800446/126558146-de2e5532-5d75-4184-87a3-bd38d9750c57.png)
+🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos. É possível consultar o resultado [aqui](https://dc-front-devtest.herokuapp.com/).
 
-Mais abaixo listamos os requisitos e algumas tarefas necessárias para dar andamento no desenvolvimento do projeto.  
+## <a id="sobre"></a> 🚧 Importante!! 🚧
+Por algum motivo, a api https://jsonplaceholder.typicode.com/ está apresentando algumas intermitências e retornando o erro 503 em algumas requisições da [aplicação](https://dc-front-devtest.herokuapp.com/). As requisições feitas localmente (http://localhost:3000/) funcionam normalmente. Para ter ajuda na resolução desse problema, foi aberta uma [issue](https://github.com/typicode/jsonplaceholder/issues/174) no repositório do Github.
 
+## <a id="conteudo"></a> Tabela de conteúdos
 
-O desenvolvimento foi iniciado com base no Create React App, portanto tem vários arquivos que talvez não serão utilizados.  
-Para rodar o projeto é bem simples:
+- [Sobre](#sobre)
+- [Tabela de Conteudo](#conteudo)
+- [Tecnologias](#tecnologias)
+- [Tarefas](#tarefas)
+- [Demonstração](#demonstracao)
+- [Documentação](#documentacao)
+- [Como Executar](#executar)
+
+## <a id="tecnologias"></a> 🛠 Principais tecnologias
+
+As seguintes tecnologias foram utilizadas na construção deste projeto:
+
+- [React](https://pt-br.reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Storybook](https://storybook.js.org/)
+- [Chromatic](https://www.chromatic.com/)
+- [Material-UI](https://material-ui.com/pt/)
+- [JEST](https://jestjs.io/pt-BR/)
+- [Testing Library](https://testing-library.com/)
+- [Context API](https://pt-br.reactjs.org/docs/context.html)
+
+## <a id="tarefas"></a> 🔝 Tarefas
+
+- [x] Corrigir funcionamento do app
+- [x] Melhorar a estrutura do código
+- [x] Melhorar estrutura de comunicação com API
+- [x] Mover telas do projeto para suas respectivas rotas
+- [x] Redesign da aplicação
+- [x] Melhorar acessibilidade
+- [x] Testes Unitários - componentes
+- [ ] Testes Unitários - páginas
+- [ ] Testes de Integração
+- [x] Gerenciamento de estado por contexto
+- [ ] Teste end-to-end
+- [ ] Cache na aplicação
+
+## <a id="demonstracao"> </a> ✅ Demonstração da aplicação
+
+### Tela de lista de usuários
+
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/usersTableWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/usersListMobile.png" height="300">
+
+### Tela de detalhe do usuário
+
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/userDetailsWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/userDetailsMobile.png" height="300">
+
+### Tela de álbuns do usuário
+
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/albumsListWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/albumsListMobile.png" height="300">
+
+### Tela de detalhe do álbum
+
+- Versão Web <br/><br/>
+  <img src="appDemonstrationImages/photosListWeb.png" width="500">
+  <br/>
+- Versão Mobile <br/><br/>
+  <img src="appDemonstrationImages/photosListMobile.png" height="300">
+
+## <a id="documentacao"></a> 📄 Documentação
+
+### Storybook
+
+A documentação dos componentes do projeto é feita através do storybook. Para rodar localmente e poder visualizá-la, basta seguir os seguintes passos definidos para [executar o projeto](#executar).
+
+### Chromatic
+
+Além disso, a documentação também está publicada através do [Chromatic](https://www.chromatic.com/), uma ferramenta que facilita o trabalho colaborativo através da automatização da coleta de feedbacks sobre a UI, teste visual e consulta à documentação, permitindo uma interação mais rápida e com menos trabalho manual.
+
+Para acessar a documentação do Chromatic, basta realizar o login e selecionar o projeto. Todos os colaboradores desse repositório também possuem acesso a esta ferramenta. Outra opção é acessar a aplicação através deste [invite para a biblioteca de componentes](https://chromatic.com/library?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor), [lista de builds](https://www.chromatic.com/builds?appId=611eafce2a53eb003a4bc7a8&branch=app-refactor) ou através do [link para o Storybook](https://app-refactor--611eafce2a53eb003a4bc7a8.chromatic.com).
+
+## 🚀 <a id="executar"></a> Como executar o projeto
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+### 🧭 Rodando a aplicação, documentação e testes
+
+```bash
+# Clone este repositório
+$ git clone https://github.com/brunaschneiders/dc.front.devtest.git
+
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd dc.front.devtest
+
+# Instale as dependências
+$ yarn install
+
+# Execute a aplicação em modo de desenvolvimento
+$ yarn start
+
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+
+# Para executar a documentação em modo de desenvolvimento:
+$ yarn storybook
+
+# A Documentação será aberta na porta:6006 - acesse http://localhost:6006
+
+# Para executar os testes:
+$ yarn test
 ```
-npm install
-npm start
-```
 
-### <a id="requisitos"></a> Requisitos
+## Autor
 
-#### Tela de lista de usuários
-- Caminho da rota: `usuarios/`
-- Deve exibir a tabela de usuarios
-- A tabela deve ser estilizada com um componente do Material UI (sugestão: Table)
-- Cada item da tabela deve conter:
-  - dados do usuário
-    - nome
-    - email
-    - telefone
-    - website
-  - link para o detalhe
-  - quantidade de álbuns
+👤 **Bruna Schneiders**
 
-#### Tela de detalhe do usuário
-- Caminho da rota: `usuarios/:userId`
-- Deve exibir todos os detalhes do usuário, conforme os contextos:
-  - dados pessoais e de acesso
-  - endereço
-  - empresa
-  - álbuns: link para lista de álbuns do user
-
-#### Tela de álbuns do usuário
-- Caminho da rota: `usuarios/:userId/albuns/`
-- Deve listar todos os álbuns do usuário
-- A lista de álbuns deve ser estilizada com um componente do Material UI (sugestão: [ImageList -Image list with titlebars](https://material-ui.com/components/image-list/#image-list-with-titlebars))
-- Cada álbum da lista deve ter:
-  - uma capa (primeira photo do álbum);
-  - o nome do álbum
-  - link para lista de photos do álbum
-
-#### Tela de detalhe do álbum
-- Caminho da rota: `usuarios/:userId/albuns/:albumId`
-- Deve exibir o nome do álbum
-- A lista de fotos deve ser estilizada com um componente do Material UI (sugestão: [ImageList -Basic Image list](https://material-ui.com/components/image-list/#basic-image-list))
-- Deve listar as fotos do álbum
-  - A lista deve exibir apenas 12 resultados por vez
-  - A lista deve possuir uma paginação
-
-## Tarefas
-
-**Importante:**
-- Cada tarefa deve ser feita de forma isolada, em sua própria branch ou commit;
-- As tarefas devem ser feitas na ordem em que estão listadas abaixo, porém;
-- Caso não saiba como resolver ou tenha dificuldades, pode pular para a próxima tarefa, e;
-- Caso não consiga terminar todas as tarefas à tempo, não se preocupe;
-
-#
-**Sinta-se à vontade para alterar, organizar e limpar o código como achar necessário, assim como criar casos de teste, documentar o projeto e utilizar 
-ferramentas que melhoram a qualidade e confiabilidade do código. A avaliação ocorrerá em acordo com o esforço colocado no projeto.**
-#
-
-### 1. fix: corrigir funcionamento do app
-- Lista de álbuns deve ser filtrada por usuário;
-- Filtro de usuários deve filtrar a tabela por nome e e-mail;
-- Filtro de usuários deve ser case insensitive;
-- Temos alguns warnings no console que precisam ser corrigidos;
-
-### 2. refactor: melhorar a estrutura do código
-Atualmente temos alguns problemas que precisam ser resolvidos:
-- O código está escrito com classes e é necessário reescrevê-lo de forma funcional, utilizando hooks.
-- O código está todo em um único arquivo, o que pode dificultar manutenção e leitura.
-- Temos muitos estilos inline, o que causa repetição de código e também dificulta a manutenção.
-- Há várias inconsistências de semântica nas marcações HTML.
-
-### 3. refactor: Melhorar estrutura de comunicação com API
-- Temos algumas promises espalhadas pelo componente, o que dificulta rastrear e reaproveitar as requisições para APIs;
-
-### 4. feature: Mover telas do projeto para suas respectivas rotas
-É necessário que algumas telas estejam em rotas específicas:
-- Cada tela deve estar em sua respectiva rota, [conforme descrito anteriormente nos requisitos](#requisitos);
-- Cada rota deve funcionar corretamente, tanto por navegação em tela quanto acessando diretamente a URL;
-
-### 5. refactor: redesign da aplicação
-Não temos um layout para o projeto e decidimos utilizar a biblioteca do Material UI no nosso app.  
-
-Nos [requisitos do projeto](#requisitos) há algumas sugestões de componentes, mas fique à vontade para utilizar outras opções ou desenvolver por conta própria, se achar necessário.  
-
-De modo geral, você só precisa seguir os padrões de estilo e projeto da biblioteca, inclusive nos demais componentes não listados nas sugestões (ex: botões, listas, paginação, campos de formulário).  
-
-### 6. refactor: Gerenciamento de estado por contexto
-Otimizar o gerenciamento de estado da aplicação, global ou por contextos (Context API, Redux, Mobx, etc).
-
----
-
-## Avaliação
-
-### O que avaliaremos
-- Código: semântica, organização, legibilidade, manutenibilidade, escalabilidade, reaproveitamento;
-- Projeto: estrutura, documentação, histórico e mensagens de commit;
-- Aplicação: experiência, usabilidade, performance;
-
-### O que deve ser feito
-- Código HTML semântico e com boa legibilidade;
-- O projeto deve ser feito em React, com estrutura funcional e utiliando a arquitetura de Hooks;
-- Integração com uma biblioteca de UI (ex: Material UI);
-- O projeto deve ter um README explicando como rodar a aplicação;
-- Utilização dos proptypes nos componentes;
-
-### O que consideramos importante que seja feito
-- Layout responsivo;
-- Otimização de estados da aplicação;
-- Validação do código (ESlint, Prettier, Stylelint, editorConfig, sonar, etc);
-- Verificação de tipos (PropTypes, jsdoc, TypeScript, etc);
-- Utlização de conceitos modernos de JavaScript;
-- Testes unitários (Jest) e integração (Testing Library)
-
-### O que gostaríamos de ver no seu teste (diferenciais)
-- Otimização de performance do código e da aplicação;
-- Estilo consistente;
-- Preocupação com acessibilidade (leitores de tela, navegação por teclado);
-- Um README de saltar os olhos;
-- Cache na aplicação ou acesso offline;
-- Código rodando live;
-- Testes end to end (Cypress, Selenium);
-- Typescript;
-
-#
-
-## Após a finalização do teste, ele deve ser entregue seguindo estes passos:
-1. Crie um novo repositório
-2. No repositório novo, clique importar código:  
-![image](https://user-images.githubusercontent.com/22237876/118177366-fa7a7700-b408-11eb-8ac3-4fe92758db03.png)
-
-3. Adicione o seguinte repo: https://github.com/deliverycenter/dc.front.devtest  
-![image](https://user-images.githubusercontent.com/22237876/118177376-fd756780-b408-11eb-8cb1-530516902db9.png)
-
-4. Mude a visibilidade do projeto para privado  
-![image](https://user-images.githubusercontent.com/22237876/118177453-167e1880-b409-11eb-9ebc-bfe6d0a76b78.png)
-![image](https://user-images.githubusercontent.com/22237876/118177483-20a01700-b409-11eb-9c48-b759a9346f2e.png)
-![image](https://user-images.githubusercontent.com/22237876/118177497-2564cb00-b409-11eb-9760-b671f9d8eced.png)
-
-5. Por fim, convide o usuário **deliverycenter-devs** como colaborador  
-![image](https://user-images.githubusercontent.com/22237876/118177547-39103180-b409-11eb-8884-50f4526f6ed7.png)
-
-6. Abra um PullRequest em seu repositório com o código alterado, para que possamos avaliar as alterações realizadas por você em relação à base do teste
+- Github: [@brunaschneiders](https://github.com/brunaschneiders)
+- LinkedIn: [@bruna-schneiders](https://linkedin.com/in/bruna-schneiders)
