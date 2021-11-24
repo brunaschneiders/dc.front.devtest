@@ -4,7 +4,8 @@
 
 ## <a id="sobre"></a> ℹ Sobre
 
-🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício que lista usuários e álbuns de fotos. É possível consultar o resultado [aqui](https://dc-front-devtest.herokuapp.com/).
+🚀 A aplicação consiste em um desafio desenvolvido para a vaga de Desenvolvedor Front-End da empresa Delivery Center cujo propósito está na refatoração de um projeto MVP fictício - conforme apresentado na imagem abaixo - que lista usuários e álbuns de fotos. É possível consultar o resultado [aqui](https://dc-front-devtest.herokuapp.com/).
+![image](https://user-images.githubusercontent.com/7800446/126558146-de2e5532-5d75-4184-87a3-bd38d9750c57.png)
 
 ## <a id="sobre"></a> 🚧 Importante!! 🚧
 Por algum motivo, a api https://jsonplaceholder.typicode.com/ está apresentando algumas intermitências e retornando o erro 503 em algumas requisições da [aplicação](https://dc-front-devtest.herokuapp.com/). As requisições feitas localmente (http://localhost:3000/) funcionam normalmente. Para ter ajuda na resolução desse problema, foi aberta uma [issue](https://github.com/typicode/jsonplaceholder/issues/174) no repositório do Github.
